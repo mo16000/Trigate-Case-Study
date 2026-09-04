@@ -10,6 +10,7 @@ import {
   Sparkles,
   UsersRound,
 } from 'lucide-react';
+import HeroAnimation from './hero-animation';
 
 const metrics = [
   ['6,000+', 'startup users'],
@@ -72,10 +73,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-visual" aria-label="Trigate dashboard interface">
+        <div className="hero-visual">
           <div className="visual-tag"><span className="status-dot" />Live product, continuously evolved</div>
-          <div className="product-frame">
-            <img src="/assets/admin-dashboard.png" alt="Trigate administration dashboard showing programs, submissions, events, and analytics" width={1428} height={1022} />
+          <div className="product-frame animation-frame">
+            <HeroAnimation />
           </div>
           <div className="floating-note"><span>01</span><strong>One platform.<br />Four distinct roles.</strong><MoveUpRight size={18} /></div>
         </div>

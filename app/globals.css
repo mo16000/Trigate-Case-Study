@@ -69,6 +69,9 @@ h1 { margin: 0; font-size: clamp(50px, 5.8vw, 90px); line-height: .98; letter-sp
 .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #35cab0; box-shadow: 0 0 0 5px rgba(53, 202, 176, .16); }
 .product-frame { overflow: hidden; border-radius: 26px; background: white; padding: 9px; box-shadow: 0 36px 70px rgba(21, 30, 107, .34); transform: translateX(3%); }
 .product-frame img { display: block; width: 100%; height: auto; border-radius: 18px; }
+.animation-frame { aspect-ratio: 1366 / 803; }
+.hero-animation { width: 100%; height: 100%; margin: 0; overflow: hidden; border-radius: 18px; background: white; }
+.hero-animation svg { display: block; width: 100% !important; height: 100% !important; }
 .floating-note { position: absolute; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 13px; right: -2%; bottom: 8px; width: min(310px, 55%); padding: 18px; background: white; border-radius: var(--radius-panel); box-shadow: var(--shadow-hover); color: var(--brand); }
 .floating-note span { width: 35px; height: 35px; display: grid; place-items: center; background: var(--brand-tint); border-radius: 50%; font-size: 12px; font-weight: 700; }
 .floating-note strong { color: var(--ink); font-size: 14px; line-height: 1.25; }
