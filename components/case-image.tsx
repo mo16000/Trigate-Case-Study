@@ -9,13 +9,14 @@ import {
   DialogClose,
 } from '@/components/ui/dialog';
 import mediaData from '@/content/media.json';
+import mediaOverrides from '@/content/media-overrides.json';
 type Asset = {
   src: string;
   width: number;
   height: number;
   variants: { src: string; width: number }[];
 };
-const media = mediaData as Record<string, Asset>;
+const media = { ...mediaData, ...mediaOverrides } as Record<string, Asset>;
 export function AssetImage({
   name,
   alt,
@@ -64,10 +65,10 @@ export function CaseImage({
       className={`case-image ${name.endsWith('.emf') ? 'flow-image' : ''}`}
     >
       <Dialog onOpenChange={() => setZoomed(false)}>
-        <DialogTrigger className="image-trigger" aria-label={`Enlarge: ${alt}`}>
+        <DialogTrigger className="image-trigger" aria-label={`Expand: ${alt}`}>
           <AssetImage name={name} alt={alt} eager={eager} />
           <span className="image-expand">
-            <Expand size={15} /> View detail
+            <Expand size={15} /> Expand
           </span>
         </DialogTrigger>
         <DialogContent className="image-dialog" showCloseButton={false}>

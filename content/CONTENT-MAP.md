@@ -28,3 +28,8 @@ Source: Doc3.docx, supplied September 8, 2026. Block IDs are the original Word b
 ## Visual thesis
 
 An indigo editorial dossier: large, closely set chapter titles; fine rules; compact chapter numbering; readable prose measures; broad evidence plates; quiet marginal navigation. Overview leads with ownership and scale. Detailed chapters preserve the evidence while alternating narrative, diagrams, screenshots, tables and callouts.
+# September 9 — user annotation overrides
+
+The original document extraction remains unchanged. The user's later annotations replace `image15.emf` with `the mvp version.png` and `image16.emf` with `mvp flows.png` through `media-overrides.json`. Full-resolution lossless WebP images and responsive variants retain the supplied diagrams.
+
+Source blocks 53–57 receive teacher, Document Add, calendar, milk, and rocket-bold SVG icons respectively. Only the three metric cells in block 70 replace their illustrations with profile-2user, rocket-boldw, and bank SVGs; reused illustrations elsewhere remain unchanged. Blocks 64–66 form a three-column MVP screenshot gallery, separate from the flow diagram in block 62. The image18 caption is now “Curriculum page in the WordPress MVP.” The shared image control reads “Expand.”

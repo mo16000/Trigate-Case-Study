@@ -98,7 +98,7 @@ export const visualLabels: Record<string, string> = {
   'image16.emf':
     'MVP system flows: sign-up and sign-in, education, session documentation, and supplements',
   'image17.png': 'The original Trigate WordPress MVP landing page',
-  'image18.png': 'Coaching sessions in the WordPress MVP',
+  'image18.png': 'Curriculum page in the WordPress MVP',
   'image19.png': 'The MVP learning experience with video content',
   'image22.png':
     'Main-version site map organized around IEE, coach, and startup roles',

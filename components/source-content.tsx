@@ -20,6 +20,18 @@ import {
   type SourceTable,
   type Run,
 } from '@/lib/case-study';
+const mvpFeatureIcons: Record<number, string> = {
+  53: 'teacher.svg',
+  54: 'Document Add.svg',
+  55: 'calendar.svg',
+  56: 'milk.svg',
+  57: 'rocket-bold.svg',
+};
+const mvpMetricIcons: Record<string, string> = {
+  'image20.png': 'profile-2user.svg',
+  'image5.png': 'rocket-boldw.svg',
+  'image1.png': 'bank.svg',
+};
 export function RichText({ runs }: { runs: Run[] }) {
   return (
     <>
@@ -71,9 +83,10 @@ export function Flow({ steps, label }: { steps: string[]; label: string }) {
   );
 }
 function Gallery({ names }: { names: string[] }) {
+  const mvpScreens = names.join(',') === 'image17.png,image18.png,image19.png';
   return (
     <div
-      className={`evidence-gallery ${names.length > 1 ? 'gallery-pair' : ''}`}
+      className={`evidence-gallery ${mvpScreens ? 'gallery-mvp' : names.length > 1 ? 'gallery-pair' : ''}`}
     >
       {names.map((name) => (
         <CaseImage
@@ -85,20 +98,38 @@ function Gallery({ names }: { names: string[] }) {
     </div>
   );
 }
-function CellContent({ paragraphs }: { paragraphs: Paragraph[] }) {
+function CellContent({
+  paragraphs,
+  mvpMetrics = false,
+}: {
+  paragraphs: Paragraph[];
+  mvpMetrics?: boolean;
+}) {
   return (
     <>
       {paragraphs.map((p, i) => (
         <Fragment key={i}>
-          {p.images.map((name) => (
-            <AssetImage
-              key={name}
-              name={name}
-              alt=""
-              className="cell-illustration"
-              sizes="260px"
-            />
-          ))}
+          {p.images.map((name) =>
+            mvpMetrics && mvpMetricIcons[name] ? (
+              <img
+                key={name}
+                src={`/assets/mvp/${mvpMetricIcons[name]}`}
+                alt=""
+                className="cell-illustration"
+                width={32}
+                height={32}
+                loading="lazy"
+              />
+            ) : (
+              <AssetImage
+                key={name}
+                name={name}
+                alt=""
+                className="cell-illustration"
+                sizes="260px"
+              />
+            ),
+          )}
           {p.text.trim() && (
             <p>
               <RichText runs={p.runs} />
@@ -125,7 +156,10 @@ function SourceTableView({ block }: { block: SourceTable }) {
       <div className={`source-cards ${mode}`} data-source-id={block.id}>
         {block.rows.flat().map((cell, i) => (
           <article key={i}>
-            <CellContent paragraphs={cell.paragraphs} />
+            <CellContent
+              paragraphs={cell.paragraphs}
+              mvpMetrics={block.id === 70}
+            />
           </article>
         ))}
       </div>
@@ -306,7 +340,20 @@ export function SourceContent({
           className={`source-list ${list.length >= 3 ? 'list-grid' : ''}`}
         >
           {list.map((p) => (
-            <li key={p.id} data-source-id={p.id}>
+            <li
+              key={p.id}
+              data-source-id={p.id}
+              className={mvpFeatureIcons[p.id] ? 'mvp-feature' : undefined}
+            >
+              {mvpFeatureIcons[p.id] && (
+                <img
+                  src={`/assets/mvp/${mvpFeatureIcons[p.id]}`}
+                  alt=""
+                  width={32}
+                  height={32}
+                  loading="lazy"
+                />
+              )}
               <RichText runs={p.runs} />
               {p.images.length > 0 && <Gallery names={p.images} />}
             </li>
@@ -320,6 +367,8 @@ export function SourceContent({
       const ids = [b.id];
       while (i + 1 < selected.length) {
         const next = selected[i + 1];
+        // The flow is a standalone diagram; the following three product screens form their own grid.
+        if (b.id === 62) break;
         if (
           next.type !== 'paragraph' ||
           next.text.trim() ||

@@ -978,6 +978,16 @@ svg {
   border-radius: 16px;
   padding: 24px;
 }
+.list-grid > .mvp-feature {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.mvp-feature > img {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
 .list-grid > li > strong:first-child {
   display: block;
   line-height: 1.5;
@@ -1021,6 +1031,35 @@ svg {
 }
 .gallery-pair > .case-image:first-child:nth-last-child(3) {
   grid-column: 1/-1;
+}
+.gallery-mvp {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+.gallery-mvp .image-trigger {
+  padding: 8px;
+}
+.gallery-mvp .image-trigger > img {
+  width: 100%;
+  height: 190px;
+  object-fit: contain;
+  object-position: top;
+}
+.gallery-mvp .image-expand {
+  position: static;
+  width: fit-content;
+  margin: 10px 0 0 auto;
+}
+@media (max-width: 560px) {
+  .gallery-mvp {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .gallery-mvp .image-trigger > img {
+    height: auto;
+  }
 }
 .case-image {
   margin: 0;

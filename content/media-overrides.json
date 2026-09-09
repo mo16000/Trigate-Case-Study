@@ -1,0 +1,32 @@
+{
+  "image15.emf": {
+    "src": "/assets/mvp/mvp-version.webp",
+    "width": 2103,
+    "height": 1471,
+    "variants": [
+      {
+        "src": "/assets/mvp/mvp-version-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/assets/mvp/mvp-version-1280.webp",
+        "width": 1280
+      }
+    ]
+  },
+  "image16.emf": {
+    "src": "/assets/mvp/mvp-flows.webp",
+    "width": 3319,
+    "height": 3340,
+    "variants": [
+      {
+        "src": "/assets/mvp/mvp-flows-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/assets/mvp/mvp-flows-1280.webp",
+        "width": 1280
+      }
+    ]
+  }
+}
