@@ -139,6 +139,59 @@ svg {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-shrink: 0;
+}
+.brand img,
+.footer-brand img {
+  width: 150px;
+  height: auto;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+.header-nav {
+  min-width: 0;
+}
+.chapter-select-trigger[data-slot='select-trigger'] {
+  width: min(380px, 38vw);
+  min-width: 145px;
+  height: 46px;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--brand-tint);
+  color: var(--brand);
+  font-size: 0.875rem;
+}
+.chapter-select-trigger [data-slot='select-value'] {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.chapter-select-list[data-slot='select-content'] {
+  width: min(440px, calc(100vw - 32px));
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: white;
+}
+.chapter-select-option[data-slot='select-item'] {
+  padding: 13px 36px 13px 14px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.chapter-select-option > span {
+  white-space: normal;
+}
+.chapter-select-option[data-highlighted],
+.chapter-select-option[data-selected] {
+  background: var(--brand-tint);
+  color: var(--brand);
 }
 .brand > span {
   font-size: 1.65rem;
@@ -276,7 +329,7 @@ svg {
   border: 1px solid #dcdcf6;
   border-radius: 24px;
   overflow: hidden;
-  padding: 0 22px 22px;
+  padding: 22px;
 }
 .plate-heading {
   display: flex;
@@ -1446,8 +1499,8 @@ svg {
     gap: 15px;
   }
   .brand img {
-    width: 27px;
-    height: 27px;
+    width: 112px;
+    height: auto;
   }
   .brand > span {
     font-size: 1.4rem;
@@ -1496,7 +1549,7 @@ svg {
     font-size: 0.72rem;
   }
   .hero-animation-plate {
-    padding: 0 8px 8px;
+    padding: 8px;
     border-radius: 15px;
   }
   .plate-heading {

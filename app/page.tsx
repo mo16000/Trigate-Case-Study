@@ -10,9 +10,9 @@ export default function Overview() {
         <div className="hero-editorial">
           <p className="eyebrow">Founding Product Designer · 2021–2025</p>
           <h1>
-            From zero to MVP.
+            TRIGATE,
             <br />
-            From MVP to <span>white-label SaaS.</span>
+            <span>An Innovation Management Platform</span>
           </h1>
           <p className="hero-description">{sourceText(2)}</p>
           <div className="hero-actions">
@@ -23,12 +23,6 @@ export default function Overview() {
           </div>
         </div>
         <div className="hero-animation-plate">
-          <div className="plate-heading">
-            <span>
-              <i /> Trigate in motion
-            </span>
-            <span>Innovation management platform</span>
-          </div>
           <HeroAnimation />
         </div>
         <div className="hero-facts">
@@ -74,13 +68,6 @@ export default function Overview() {
           name="image29.png"
           alt="Trigate IEE dashboard: programs, startup applications, events, and analytics"
         />
-        <div className="transformation">
-          <span>WordPress MVP</span>
-          <ArrowRight size={20} />
-          <span>Custom shared platform</span>
-          <ArrowRight size={20} />
-          <strong>White-label SaaS</strong>
-        </div>
       </section>
       <section className="ownership-section page-width" id="ownership">
         <div className="section-kicker">
@@ -128,7 +115,7 @@ export default function Overview() {
               <strong>9 → 22</strong>
               <h3>Innovation organizations</h3>
               <p>
-                Active customers grew in the six months after introducing the
+                Active users grew in the six months after introducing the
                 white-label plan.
               </p>
               <span>

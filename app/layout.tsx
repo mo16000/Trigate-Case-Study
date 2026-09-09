@@ -20,8 +20,17 @@ export default function RootLayout({
         <SiteNav />
         {children}
         <footer className="site-footer page-width">
-          <a className="footer-brand" href="/">
-            trigate.
+          <a
+            className="footer-brand"
+            href="/"
+            aria-label="Trigate case study overview"
+          >
+            <img
+              src="/assets/Trigate-Logo-2.svg"
+              width={150}
+              height={20}
+              alt="Trigate"
+            />
           </a>
           <span>A four-year product design journey · 2021–2025</span>
           <a href="/#chapters">Explore the case study</a>

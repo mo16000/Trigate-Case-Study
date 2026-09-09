@@ -1,47 +1,64 @@
 'use client';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { chapters } from '@/lib/case-study';
-import { ArrowUpRight, ChevronDown } from 'lucide-react';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+const pages = [
+  { value: '/', label: 'Overview' },
+  ...chapters.map((c) => ({ value: `/${c.slug}`, label: c.title })),
+];
 export default function SiteNav() {
   const pathname = usePathname();
-  const current = chapters.find((c) => pathname === `/${c.slug}`);
+  const router = useRouter();
+  const current = pages.find((page) => page.value === pathname) ?? pages[0];
   return (
     <header className="site-header">
       <a className="brand" href="/" aria-label="Trigate case study overview">
-        <img src="/assets/trigate-logo.svg" width={32} height={32} alt="" />
-        <span>
-          trigate<span className="brand-dot">.</span>
-        </span>
+        <img
+          src="/assets/Trigate-Logo-2.svg"
+          width={150}
+          height={20}
+          alt="Trigate"
+        />
       </a>
       <span className="header-context">A product design case study</span>
       <nav className="header-nav" aria-label="Main navigation">
-        <a
-          href="/"
-          className="overview-link"
-          aria-current={!current ? 'page' : undefined}
+        <Select
+          items={pages}
+          value={current.value}
+          onValueChange={(value) => {
+            if (value && value !== pathname) router.push(value);
+          }}
         >
-          Overview
-        </a>
-        <details className="chapter-menu" key={pathname}>
-          <summary>
-            {current ? `Chapter ${current.number}` : 'Chapters'}{' '}
-            <ChevronDown size={16} />
-          </summary>
-          <div className="chapter-menu-panel">
-            <span className="menu-label">The complete story</span>
-            {chapters.map((c) => (
-              <a
-                key={c.slug}
-                href={`/${c.slug}`}
-                aria-current={current?.slug === c.slug ? 'page' : undefined}
+          <SelectTrigger
+            className="chapter-select-trigger"
+            aria-label="Choose a page"
+            title={current.label}
+          >
+            <SelectValue>{current.label}</SelectValue>
+          </SelectTrigger>
+          <SelectContent
+            className="chapter-select-list"
+            align="end"
+            alignItemWithTrigger={false}
+            sideOffset={12}
+          >
+            {pages.map((page) => (
+              <SelectItem
+                key={page.value}
+                value={page.value}
+                className="chapter-select-option"
               >
-                <span>{c.number}</span>
-                <strong>{c.title}</strong>
-                <ArrowUpRight size={17} />
-              </a>
+                {page.label}
+              </SelectItem>
             ))}
-          </div>
-        </details>
+          </SelectContent>
+        </Select>
       </nav>
     </header>
   );
