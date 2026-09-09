@@ -10,7 +10,7 @@ export default function Overview() {
         <div className="hero-editorial">
           <p className="eyebrow">Founding Product Designer · 2021–2025</p>
           <h1>
-            TRIGATE,
+            TRIGATE
             <br />
             <span>An Innovation Management Platform</span>
           </h1>
