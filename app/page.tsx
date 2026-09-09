@@ -1,7 +1,7 @@
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import HeroAnimation from './hero-animation';
 import { chapters, sourceText } from '@/lib/case-study';
-import { AssetImage, CaseImage } from '@/components/case-image';
+import { AssetImage } from '@/components/case-image';
 
 export default function Overview() {
   return (
@@ -62,12 +62,6 @@ export default function Overview() {
             </div>
           ))}
         </div>
-      </section>
-      <section className="overview-preview page-width">
-        <CaseImage
-          name="image29.png"
-          alt="Trigate IEE dashboard: programs, startup applications, events, and analytics"
-        />
       </section>
       <section className="ownership-section page-width" id="ownership">
         <div className="section-kicker">
