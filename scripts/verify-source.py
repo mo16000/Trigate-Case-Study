@@ -8,6 +8,7 @@ ROOT=Path(__file__).resolve().parents[1]
 data=json.loads((ROOT/'content/document.json').read_text())
 media=json.loads((ROOT/'content/media.json').read_text())
 media.update(json.loads((ROOT/'content/media-overrides.json').read_text()))
+text_overrides=json.loads((ROOT/'content/text-overrides.json').read_text())
 metric_icons={'image20.png':'profile-2user.svg','image5.png':'rocket-boldw.svg','image1.png':'bank.svg'}
 chapters=[('where-it-started',29,74),('the-main-version',77,121),('removing-the-drop-off',124,153),('coaching-report-workflow',155,218),('co-founder-matching',223,251)]
 def norm(t): return re.sub(r'\s+','',t.replace('\uf0b7','•'))
@@ -31,7 +32,9 @@ for route,start,end in chapters:
             refs+=p['images']
             expected_media += [f'/assets/mvp/{metric_icons[n]}' if b['id']==70 and n in metric_icons else media[n]['src'] for n in p['images']]
             # Flow arrows / steps are web presentation; preserve their text, excluding separators.
-            fragments=p['text'].split('\n')
+            expected_text=text_overrides.get(str(b['id']),p['text'])
+            if b['id']==79: expected_text=expected_text.replace('Core Needs:','')
+            fragments=expected_text.split('\n')
             for fragment in fragments:
                 for part in fragment.split('→'):
                     part=part.strip()
@@ -40,6 +43,17 @@ for route,start,end in chapters:
     imgs=article.xpath('.//img/@src')
     missing_media=[src for src in set(expected_media) if src not in imgs]
     if missing_media: errors.append(f'{route}: missing media {missing_media}')
+    if route=='the-main-version':
+        assert article.xpath('.//h2[@id="section-79" and text()="Roles and Core Needs"]')
+        assert article.xpath('.//h2[@id="section-88" and text()="UI Design"]')
+        assert 'Core Needs:' not in ''.join(article.itertext())
+        for section_id in [90,94,97,100,104]:
+            heading=article.xpath('.//h3[@id=$id]',id=f'section-{section_id}')
+            assert len(heading)==1
+            header=heading[0].getparent()
+            assert 'ui-feature-header' in header.get('class','')
+            assert header[0].xpath('.//img') and header[1] is heading[0]
+            assert not header.xpath('.//button')
     if route=='where-it-started':
         for icon in ['teacher.svg','Document Add.svg','calendar.svg','milk.svg','rocket-bold.svg']:
             if f'/assets/mvp/{icon}' not in imgs: errors.append(f'Missing MVP feature icon: {icon}')

@@ -13,7 +13,8 @@ for name in ['teacher.svg', 'Document Add.svg', 'calendar.svg', 'milk.svg', 'roc
 for name in ['profile-2user.svg', 'rocket-boldw.svg', 'bank.svg']:
     shutil.copy2(SOURCE / 'untitled folder' / name, DEST / name)
 
-overrides = {}
+override_file = ROOT / 'content/media-overrides.json'
+overrides = json.loads(override_file.read_text()) if override_file.exists() else {}
 for key, name, stem in [('image15.emf', 'the mvp version.png', 'mvp-version'), ('image16.emf', 'mvp flows.png', 'mvp-flows')]:
     with Image.open(SOURCE / name) as im:
         im.save(DEST / f'{stem}.webp', 'WEBP', lossless=True, method=6)

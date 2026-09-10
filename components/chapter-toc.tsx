@@ -1,8 +1,12 @@
 import { ArrowLeft, ChevronDown } from 'lucide-react';
-import { sourceText, type Chapter } from '@/lib/case-study';
+import { sourceText, uiFeatureHeadings, type Chapter } from '@/lib/case-study';
 export function ChapterToc({ chapter }: { chapter: Chapter }) {
   const links = chapter.sections.map((id) => (
-    <a key={id} href={'#section-' + id}>
+    <a
+      key={id}
+      href={'#section-' + id}
+      className={uiFeatureHeadings.has(id) ? 'toc-subheading' : undefined}
+    >
       {sourceText(id).split('\n')[0]}
     </a>
   ));

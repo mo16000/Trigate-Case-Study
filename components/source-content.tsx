@@ -32,6 +32,13 @@ const mvpMetricIcons: Record<string, string> = {
   'image5.png': 'rocket-boldw.svg',
   'image1.png': 'bank.svg',
 };
+const uiFeatureIcons: Record<number, { name: string; sourceId?: number }> = {
+  90: { name: 'image26.png', sourceId: 89 },
+  94: { name: 'image31.png', sourceId: 93 },
+  97: { name: 'image36.png' },
+  100: { name: 'image41.png' },
+  104: { name: 'image45.png', sourceId: 103 },
+};
 export function RichText({ runs }: { runs: Run[] }) {
   return (
     <>
@@ -241,9 +248,17 @@ export function SourceContent({
   for (let i = 0; i < selected.length; i++) {
     const b = selected[i];
     if (b.type === 'table') {
+      if (b.id === 79)
+        output.push(
+          <div key="roles-title" className="source-section">
+            <h2 id="section-79">Roles and Core Needs</h2>
+          </div>,
+        );
       output.push(<SourceTableView key={b.id} block={b} />);
       continue;
     }
+    // Keep each UI illustration immediately above its related subheading.
+    if ([89, 93, 103].includes(b.id)) continue;
     if ([187, 193, 208].includes(b.id)) {
       const last = b.id === 187 ? 190 : b.id === 193 ? 197 : 213;
       const group = selected.filter(
@@ -303,19 +318,28 @@ export function SourceContent({
         mixedHeadings.has(b.id) && split >= 0 ? b.text.slice(0, split) : b.text
       ).trim();
       const Heading = subHeadings.has(b.id) ? 'h3' : 'h2';
+      const featureIcon = uiFeatureIcons[b.id];
       output.push(
         <div
           key={b.id}
-          className={`source-section ${[117, 153, 214].includes(b.id) ? 'outcome-section' : ''}`}
+          className={`source-section ${featureIcon ? 'ui-feature-header' : ''} ${[117, 153, 214].includes(b.id) ? 'outcome-section' : ''}`}
           data-source-id={b.id}
         >
+          {featureIcon && (
+            <div
+              className={`ui-feature-icon ${[97, 100].includes(b.id) ? 'compact-icon' : ''}`}
+              data-source-id={featureIcon.sourceId}
+            >
+              <AssetImage name={featureIcon.name} alt="" sizes="160px" />
+            </div>
+          )}
           <Heading id={`section-${b.id}`}>{heading}</Heading>
           {mixedHeadings.has(b.id) && split >= 0 && (
             <p>
               <SliceText block={b} from={split + 1} />
             </p>
           )}
-          {b.images.length > 0 && <Gallery names={b.images} />}
+          {b.images.length > 0 && !featureIcon && <Gallery names={b.images} />}
         </div>,
       );
       continue;

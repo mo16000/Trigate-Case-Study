@@ -1,4 +1,10 @@
 {
+  "image24.png": {
+    "src": "/assets/main-version/Section-1.svg",
+    "width": 6855,
+    "height": 3583,
+    "variants": []
+  },
   "image15.emf": {
     "src": "/assets/mvp/mvp-version.webp",
     "width": 2103,

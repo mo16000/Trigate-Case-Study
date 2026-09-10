@@ -776,6 +776,33 @@ svg {
 .source-section {
   margin-top: 65px;
 }
+.source-section.ui-feature-header {
+  text-align: center;
+}
+.source-section.ui-feature-header > h3 {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  line-height: 1.3;
+}
+.ui-feature-icon {
+  margin: 0 auto 24px;
+  width: 160px;
+}
+.ui-feature-icon img {
+  width: 160px;
+  height: 140px;
+  object-fit: contain;
+}
+.ui-feature-icon.compact-icon {
+  width: 72px;
+}
+.ui-feature-icon.compact-icon img {
+  width: 72px;
+  height: 72px;
+}
+.chapter-aside nav a.toc-subheading {
+  padding-left: 30px;
+}
 .source-section h2,
 .source-flow h2 {
   font-size: clamp(1.85rem, 2.6vw, 2.5rem);

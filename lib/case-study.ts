@@ -1,4 +1,5 @@
 import source from '@/content/document.json';
+import textOverrides from '@/content/text-overrides.json';
 export type Run = { text: string; bold: boolean; italic: boolean };
 export type Paragraph = {
   type: 'paragraph';
@@ -13,10 +14,39 @@ export type Paragraph = {
 export type Cell = { paragraphs: Paragraph[]; span: string[] };
 export type SourceTable = { type: 'table'; id: number; rows: Cell[][] };
 export type Block = Paragraph | SourceTable;
-export const blocks = source.blocks as Block[];
+const revisedText = textOverrides as Record<number, string>;
+export const blocks = (source.blocks as Block[]).map((block): Block => {
+  if (block.type === 'paragraph' && revisedText[block.id]) {
+    const text = revisedText[block.id];
+    return { ...block, text, runs: [{ text, bold: false, italic: false }] };
+  }
+  if (block.type === 'table' && block.id === 79) {
+    return {
+      ...block,
+      rows: block.rows.map((row) =>
+        row.map((cell) => ({
+          ...cell,
+          paragraphs: cell.paragraphs.map((p) =>
+            p.text.includes('Core Needs:')
+              ? {
+                  ...p,
+                  text: p.text.replace(/\s*Core Needs:/, ''),
+                  runs: p.runs.filter(
+                    (r) => r.text !== 'Core Needs:' && r.text !== '\n',
+                  ),
+                }
+              : p,
+          ),
+        })),
+      ),
+    };
+  }
+  return block;
+});
 export const paragraph = (id: number) =>
   blocks.find((b) => b.id === id) as Paragraph;
-export const sourceText = (id: number) => paragraph(id).text.trim();
+export const sourceText = (id: number) =>
+  id === 79 ? 'Roles and Core Needs' : paragraph(id).text.trim();
 export const chapters = [
   {
     slug: 'where-it-started',
@@ -42,7 +72,7 @@ export const chapters = [
       'Scaling the core platform, designing for four roles, and removing sales barriers with a white-label model.',
     image: 'image29.png',
     takeaway: '9 → 22 innovation organizations',
-    sections: [82, 86, 88, 90, 94, 97, 100, 104, 107, 117, 120],
+    sections: [79, 82, 86, 88, 90, 94, 97, 100, 104, 107, 117, 120],
   },
   {
     slug: 'removing-the-drop-off',
@@ -158,5 +188,14 @@ export const standaloneHeadings = new Set([
 export const mixedHeadings = new Set([
   107, 117, 140, 153, 172, 180, 199, 214, 225, 227, 242, 246, 250,
 ]);
-export const subHeadings = new Set([132, 142, 165, 185, 192, 207]);
+export const uiFeatureHeadings = new Set([90, 94, 97, 100, 104]);
+export const subHeadings = new Set([
+  ...uiFeatureHeadings,
+  132,
+  142,
+  165,
+  185,
+  192,
+  207,
+]);
 export const callouts = new Set([43, 44, 128, 136, 137, 168, 231, 245, 251]);
