@@ -1,8 +1,20 @@
 {
   "image24.png": {
-    "src": "/assets/main-version/Section-1.svg",
-    "width": 6855,
-    "height": 3583,
+    "src": "/assets/main-version/Section-11.svg",
+    "width": 5899,
+    "height": 3314,
+    "variants": []
+  },
+  "image36.png": {
+    "src": "/assets/main-version/teacher.svg",
+    "width": 140,
+    "height": 140,
+    "variants": []
+  },
+  "image41.png": {
+    "src": "/assets/main-version/send.svg",
+    "width": 140,
+    "height": 140,
     "variants": []
   },
   "image15.emf": {
