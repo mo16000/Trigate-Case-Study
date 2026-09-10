@@ -1166,6 +1166,32 @@ svg {
   font-size: 0.68rem;
   color: var(--muted);
 }
+.flow-steps li[data-flow-tone] {
+  color: #000000;
+}
+.flow-steps li[data-flow-tone] .step-index {
+  color: inherit;
+}
+.flow-steps li[data-flow-tone='signup'] {
+  background: #ffece7;
+  border-color: #ffd0c4;
+}
+.flow-steps li[data-flow-tone='role'] {
+  background: #fff0db;
+  border-color: #ffdeaf;
+}
+.flow-steps li[data-flow-tone='program'] {
+  background: #e3f9f5;
+  border-color: #b9f1e7;
+}
+.flow-steps li[data-flow-tone='info'] {
+  background: #e5f3ff;
+  border-color: #b7deff;
+}
+.pending-review {
+  white-space: nowrap;
+  font-size: 0.85em;
+}
 .step-arrow {
   position: absolute;
   right: -17px;

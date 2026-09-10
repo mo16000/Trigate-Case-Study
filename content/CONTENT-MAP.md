@@ -35,6 +35,10 @@ The original document extraction remains unchanged. The user's later annotations
 Source blocks 53–57 receive teacher, Document Add, calendar, milk, and rocket-bold SVG icons respectively. Only the three metric cells in block 70 replace their illustrations with profile-2user, rocket-boldw, and bank SVGs; reused illustrations elsewhere remain unchanged. Blocks 64–66 form a three-column MVP screenshot gallery, separate from the flow diagram in block 62. The image18 caption is now “Curriculum page in the WordPress MVP.” The shared image control reads “Expand.”
 # Main Version annotation updates
 
+## Removing the Drop-off follow-up
+
+Role-card labels omit their trailing colons. Both registration flows use the requested sign-up, role-selection, program-selection, and information-entry colors, with black text on those steps. Pending-review dashboard labels use an explicit line break. The duplicate original/redesigned flow screenshots (source 134 and image56.emf in source 143) are omitted from the page; their source assets remain available in the repository.
+
 Follow-up annotations replace the UI kit visual with `Section 11.svg` and the Training/Coaching icons with the supplied `teacher.svg` and `send.svg`. The five UI feature subheadings now use a smaller responsive 1.3–1.65rem scale, preserving centered, icon-first, non-expandable presentation.
 
 The role cards now share a “Roles and Core Needs” heading; their repeated “Core Needs:” labels are removed. UI Design remains the parent heading, with five centered, icon-first subheadings. These decorative icons are not expandable. The UI kit visual uses the supplied `Section 1.svg` unchanged via the media override. Explicit copy revisions for Supplements and the closing product-design paragraph are recorded in `text-overrides.json`; the original document extraction remains intact.

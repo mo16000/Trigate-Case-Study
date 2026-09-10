@@ -19,7 +19,7 @@ for route,start,end in chapters:
     for decorative in article.xpath('.//figcaption | .//*[@class="step-index"] | .//*[@class="image-expand"]'):
         decorative.drop_tree()
     text=norm(''.join(article.itertext()))
-    source_blocks=[b for b in data['blocks'] if start<b['id']<=end]
+    source_blocks=[b for b in data['blocks'] if start<b['id']<=end and b['id']!=134]
     visible_ids=[]
     for el in article.xpath('.//*[@data-source-id or @data-source-ids]'):
         visible_ids+=list(map(int,(el.get('data-source-id') or el.get('data-source-ids')).split(',')))
@@ -29,11 +29,13 @@ for route,start,end in chapters:
     for b in source_blocks:
         paragraphs=[b] if b['type']=='paragraph' else [p for r in b['rows'] for c in r for p in c['paragraphs']]
         for p in paragraphs:
-            refs+=p['images']
-            expected_media += [f'/assets/mvp/{metric_icons[n]}' if b['id']==70 and n in metric_icons else media[n]['src'] for n in p['images']]
+            retained_images=[] if b['id']==143 else p['images']
+            refs+=retained_images
+            expected_media += [f'/assets/mvp/{metric_icons[n]}' if b['id']==70 and n in metric_icons else media[n]['src'] for n in retained_images]
             # Flow arrows / steps are web presentation; preserve their text, excluding separators.
             expected_text=text_overrides.get(str(b['id']),p['text'])
             if b['id']==79: expected_text=expected_text.replace('Core Needs:','')
+            if b['id']==127: expected_text=re.sub(r'^(Viewer|Founder|Team member):',r'\1',expected_text)
             fragments=expected_text.split('\n')
             for fragment in fragments:
                 for part in fragment.split('→'):
@@ -43,6 +45,13 @@ for route,start,end in chapters:
     imgs=article.xpath('.//img/@src')
     missing_media=[src for src in set(expected_media) if src not in imgs]
     if missing_media: errors.append(f'{route}: missing media {missing_media}')
+    if route=='removing-the-drop-off':
+        assert all(media[n]['src'] not in imgs for n in ['image55.emf','image56.emf'])
+        assert article.xpath('.//*[@data-source-id="127"]//strong/text()')==['Viewer','Founder','Team member']
+        for block_id,tones in [(133,['signup','role','program','info','info','info','info',None]),(143,['signup',None,'program','info','info','info',None])]:
+            steps=article.xpath('.//*[@data-source-id=$id]/ol/li',id=str(block_id))
+            assert [s.get('data-flow-tone') for s in steps]==tones
+            assert steps[-1].xpath('./span/br')
     if route=='the-main-version':
         assert article.xpath('.//h2[@id="section-79" and text()="Roles and Core Needs"]')
         assert article.xpath('.//h2[@id="section-88" and text()="UI Design"]')

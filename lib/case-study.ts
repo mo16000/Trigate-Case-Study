@@ -41,6 +41,23 @@ export const blocks = (source.blocks as Block[]).map((block): Block => {
       ),
     };
   }
+  if (block.type === 'table' && block.id === 127) {
+    const removeRoleColon = (text: string) =>
+      text.replace(/^(Viewer|Founder|Team member):/, '$1');
+    return {
+      ...block,
+      rows: block.rows.map((row) =>
+        row.map((cell) => ({
+          ...cell,
+          paragraphs: cell.paragraphs.map((p) => ({
+            ...p,
+            text: removeRoleColon(p.text),
+            runs: p.runs.map((r) => ({ ...r, text: removeRoleColon(r.text) })),
+          })),
+        })),
+      ),
+    };
+  }
   return block;
 });
 export const paragraph = (id: number) =>

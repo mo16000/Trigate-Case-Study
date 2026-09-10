@@ -74,13 +74,53 @@ function SliceText({ block, from = 0 }: { block: Paragraph; from?: number }) {
   });
   return <RichText runs={runs} />;
 }
-export function Flow({ steps, label }: { steps: string[]; label: string }) {
+export function Flow({
+  steps,
+  label,
+  registration = false,
+}: {
+  steps: string[];
+  label: string;
+  registration?: boolean;
+}) {
+  const tone = (step: string) => {
+    if (!registration) return undefined;
+    if (step === 'Sign Up') return 'signup';
+    if (step === 'Select Role') return 'role';
+    if (
+      step === 'Select IEE Program' ||
+      step === 'Explore IEEs & Programs - Apply'
+    )
+      return 'program';
+    if (
+      [
+        'Startup Basic Info',
+        'Business Model Canvas and needs',
+        'Founder Info',
+        'Team Info',
+        'Startup Info',
+        'BMC and needs',
+      ].includes(step)
+    )
+      return 'info';
+    return undefined;
+  };
   return (
     <ol className="flow-steps" aria-label={label}>
       {steps.map((step, i) => (
-        <li key={i}>
+        <li key={i} data-flow-tone={tone(step)}>
           <span className="step-index">{String(i + 1).padStart(2, '0')}</span>
-          <span>{step}</span>
+          <span>
+            {registration && step === 'Dashboard (Pending Review)' ? (
+              <>
+                Dashboard
+                <br />
+                <span className="pending-review">(Pending Review)</span>
+              </>
+            ) : (
+              step
+            )}
+          </span>
           {i < steps.length - 1 && (
             <ArrowRight aria-hidden="true" className="step-arrow" size={17} />
           )}
@@ -258,7 +298,7 @@ export function SourceContent({
       continue;
     }
     // Keep each UI illustration immediately above its related subheading.
-    if ([89, 93, 103].includes(b.id)) continue;
+    if ([89, 93, 103, 134].includes(b.id)) continue;
     if ([187, 193, 208].includes(b.id)) {
       const last = b.id === 187 ? 190 : b.id === 193 ? 197 : 213;
       const group = selected.filter(
@@ -303,8 +343,12 @@ export function SourceContent({
         <div key={b.id} className="source-flow" data-source-id={b.id}>
           {heading && <h2 id={`section-${b.id}`}>{heading}</h2>}
           {b.id === 166 && <h3>Original Flow:</h3>}
-          <Flow steps={steps} label={heading || 'User flow'} />
-          {b.images.length > 0 && <Gallery names={b.images} />}{' '}
+          <Flow
+            steps={steps}
+            label={heading || 'User flow'}
+            registration={b.id === 133 || b.id === 143}
+          />
+          {b.images.length > 0 && b.id !== 143 && <Gallery names={b.images} />}{' '}
           {b.id === 143 && (
             <h3 id="key-design-improvements">Key Design Improvements:</h3>
           )}
