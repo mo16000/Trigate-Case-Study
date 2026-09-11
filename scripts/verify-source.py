@@ -16,6 +16,9 @@ errors=[]; reports=[]
 for route,start,end in chapters:
     dom=html.fromstring(urlopen('http://localhost:3000/'+route).read())
     article=dom.xpath('//*[@class="chapter-content"]')[0]
+    if route=='co-founder-matching':
+        founder=article.xpath('.//figure[.//img[@src=$src]]',src=media['image69.png']['src'])
+        assert len(founder)==1 and not founder[0].xpath('.//button | .//figcaption')
     for decorative in article.xpath('.//figcaption | .//*[@class="step-index"] | .//*[@class="image-expand"]'):
         decorative.drop_tree()
     text=norm(''.join(article.itertext()))
@@ -34,6 +37,7 @@ for route,start,end in chapters:
             expected_media += [f'/assets/mvp/{metric_icons[n]}' if b['id']==70 and n in metric_icons else media[n]['src'] for n in retained_images]
             # Flow arrows / steps are web presentation; preserve their text, excluding separators.
             expected_text=text_overrides.get(str(b['id']),p['text'])
+            if b['id']==248 and expected_text.strip() in ['up','down']: expected_text=''
             if b['id']==79: expected_text=expected_text.replace('Core Needs:','')
             if b['id']==153: expected_text=expected_text.replace('Business and UX Impact:','Business and UX Impact')
             if b['id']==127: expected_text=re.sub(r'^(Viewer|Founder|Team member):',r'\1',expected_text)
@@ -46,6 +50,12 @@ for route,start,end in chapters:
     imgs=article.xpath('.//img/@src')
     missing_media=[src for src in set(expected_media) if src not in imgs]
     if missing_media: errors.append(f'{route}: missing media {missing_media}')
+    if route=='co-founder-matching':
+        table=article.xpath('.//*[@data-source-id="248"]')[0]
+        assert len(table.xpath('.//img'))==9
+        assert all(i.get('alt') in ['Increases','Decreases'] for i in table.xpath('.//img'))
+        assert not table.xpath('.//p[normalize-space(.)="up" or normalize-space(.)="down"]')
+        assert dom.xpath('//a[contains(@class,"next-chapter")]/strong/text()')==['TRIGATE: An Innovation Management Platform']
     if route=='coaching-report-workflow':
         assert not article.xpath('.//*[@id="section-165"]')
         assert article.xpath('.//*[@data-source-id="166"]/h3/text()')==['Original Coaching Report Flow']

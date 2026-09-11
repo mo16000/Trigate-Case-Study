@@ -161,6 +161,8 @@ function Gallery({
           key={name}
           name={name}
           alt={visualLabels[name] || 'Trigate product interface'}
+          expandable={name !== 'image69.png'}
+          showCaption={name !== 'image69.png'}
         />
       ))}
     </div>
@@ -192,7 +194,7 @@ function CellContent({
               <AssetImage
                 key={name}
                 name={name}
-                alt=""
+                alt={['image70.png', 'image71.png'].includes(name) ? visualLabels[name] : ''}
                 className="cell-illustration"
                 sizes="260px"
               />

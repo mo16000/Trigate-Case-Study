@@ -52,14 +52,28 @@ export function CaseImage({
   name,
   alt,
   eager = false,
+  expandable = true,
+  showCaption = true,
 }: {
   name: string;
   alt: string;
   eager?: boolean;
+  expandable?: boolean;
+  showCaption?: boolean;
 }) {
   const [zoomed, setZoomed] = useState(false);
   const asset = media[name];
   if (!asset) return null;
+  if (!expandable) {
+    return (
+      <figure className="case-image">
+        <div className="image-trigger image-static">
+          <AssetImage name={name} alt={alt} eager={eager} />
+        </div>
+        {showCaption && <figcaption>{alt}</figcaption>}
+      </figure>
+    );
+  }
   return (
     <figure
       className={`case-image ${name.endsWith('.emf') ? 'flow-image' : ''}`}
@@ -104,7 +118,7 @@ export function CaseImage({
           </div>
         </DialogContent>
       </Dialog>
-      <figcaption>{alt}</figcaption>
+      {showCaption && <figcaption>{alt}</figcaption>}
     </figure>
   );
 }

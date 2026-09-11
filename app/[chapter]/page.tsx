@@ -74,7 +74,7 @@ export default async function ChapterPage({ params }: Props) {
             <ArrowRight size={17} />
           </span>
           <strong>
-            {next?.title || 'Trigate — from MVP to white-label SaaS'}
+            {next?.title || 'TRIGATE: An Innovation Management Platform'}
           </strong>
         </a>
       </nav>

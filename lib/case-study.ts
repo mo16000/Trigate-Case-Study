@@ -70,6 +70,21 @@ export const blocks = (source.blocks as Block[]).map((block): Block => {
       ),
     };
   }
+  if (block.type === 'table' && block.id === 248) {
+    return {
+      ...block,
+      rows: block.rows.map((row) =>
+        row.map((cell) => ({
+          ...cell,
+          paragraphs: cell.paragraphs.map((p) =>
+            /^(up|down)$/.test(p.text.trim())
+              ? { ...p, text: '', runs: [] }
+              : p,
+          ),
+        })),
+      ),
+    };
+  }
   return block;
 });
 export const paragraph = (id: number) =>

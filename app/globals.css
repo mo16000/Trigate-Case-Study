@@ -1118,7 +1118,7 @@ svg {
   height: auto;
   border-radius: 7px;
 }
-.image-trigger:hover {
+.image-trigger:not(.image-static):hover {
   border-color: #a4a9de;
 }
 .image-expand {

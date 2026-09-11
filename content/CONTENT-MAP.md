@@ -25,6 +25,10 @@ Source: Doc3.docx, supplied September 8, 2026. Block IDs are the original Word b
 - The co-founder feature is a strategic exploration and postponement decision, not a shipped matching product.
 - Generated responsive WebP derivatives retain original-resolution lossless copies. Figures open their full-resolution version for detailed inspection.
 
+## Co-founder matching annotation updates
+
+The founder illustration remains in its original frame but has no expansion control or visible caption. Table 248 retains all nine directional arrows with accessible image labels, while its visible “up” and “down” text is omitted. The closing overview link reads “TRIGATE: An Innovation Management Platform.” Original extracted source remains unchanged.
+
 ## Visual thesis
 
 An indigo editorial dossier: large, closely set chapter titles; fine rules; compact chapter numbering; readable prose measures; broad evidence plates; quiet marginal navigation. Overview leads with ownership and scale. Detailed chapters preserve the evidence while alternating narrative, diagrams, screenshots, tables and callouts.
