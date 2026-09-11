@@ -37,6 +37,8 @@ Source blocks 53–57 receive teacher, Document Add, calendar, milk, and rocket-
 
 ## Removing the Drop-off follow-up
 
+The three dashboard steps also use the specified #EEEEFA fill, #D0CFF1 border, and black text. “Business and UX Impact” has no trailing colon; its paragraph formatting is preserved.
+
 Role-card labels omit their trailing colons. Both registration flows use the requested sign-up, role-selection, program-selection, and information-entry colors, with black text on those steps. Pending-review dashboard labels use an explicit line break. The duplicate original/redesigned flow screenshots (source 134 and image56.emf in source 143) are omitted from the page; their source assets remain available in the repository.
 
 Follow-up annotations replace the UI kit visual with `Section 11.svg` and the Training/Coaching icons with the supplied `teacher.svg` and `send.svg`. The five UI feature subheadings now use a smaller responsive 1.3–1.65rem scale, preserving centered, icon-first, non-expandable presentation.

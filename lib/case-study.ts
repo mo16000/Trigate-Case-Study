@@ -16,6 +16,18 @@ export type SourceTable = { type: 'table'; id: number; rows: Cell[][] };
 export type Block = Paragraph | SourceTable;
 const revisedText = textOverrides as Record<number, string>;
 export const blocks = (source.blocks as Block[]).map((block): Block => {
+  if (block.type === 'paragraph' && block.id === 153) {
+    const removeImpactColon = (text: string) =>
+      text.replace('Business and UX Impact:', 'Business and UX Impact');
+    return {
+      ...block,
+      text: removeImpactColon(block.text),
+      runs: block.runs.map((run) => ({
+        ...run,
+        text: removeImpactColon(run.text),
+      })),
+    };
+  }
   if (block.type === 'paragraph' && revisedText[block.id]) {
     const text = revisedText[block.id];
     return { ...block, text, runs: [{ text, bold: false, italic: false }] };

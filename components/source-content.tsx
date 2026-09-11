@@ -85,6 +85,8 @@ export function Flow({
 }) {
   const tone = (step: string) => {
     if (!registration) return undefined;
+    if (step === 'Dashboard' || step === 'Dashboard (Pending Review)')
+      return 'dashboard';
     if (step === 'Sign Up') return 'signup';
     if (step === 'Select Role') return 'role';
     if (

@@ -1192,6 +1192,10 @@ svg {
   white-space: nowrap;
   font-size: 0.85em;
 }
+.flow-steps li[data-flow-tone='dashboard'] {
+  background: #eeeefa;
+  border-color: #d0cff1;
+}
 .step-arrow {
   position: absolute;
   right: -17px;

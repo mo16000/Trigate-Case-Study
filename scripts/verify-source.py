@@ -35,6 +35,7 @@ for route,start,end in chapters:
             # Flow arrows / steps are web presentation; preserve their text, excluding separators.
             expected_text=text_overrides.get(str(b['id']),p['text'])
             if b['id']==79: expected_text=expected_text.replace('Core Needs:','')
+            if b['id']==153: expected_text=expected_text.replace('Business and UX Impact:','Business and UX Impact')
             if b['id']==127: expected_text=re.sub(r'^(Viewer|Founder|Team member):',r'\1',expected_text)
             fragments=expected_text.split('\n')
             for fragment in fragments:
@@ -48,7 +49,8 @@ for route,start,end in chapters:
     if route=='removing-the-drop-off':
         assert all(media[n]['src'] not in imgs for n in ['image55.emf','image56.emf'])
         assert article.xpath('.//*[@data-source-id="127"]//strong/text()')==['Viewer','Founder','Team member']
-        for block_id,tones in [(133,['signup','role','program','info','info','info','info',None]),(143,['signup',None,'program','info','info','info',None])]:
+        assert article.xpath('.//h2[@id="section-153"]/text()')==['Business and UX Impact']
+        for block_id,tones in [(133,['signup','role','program','info','info','info','info','dashboard']),(143,['signup','dashboard','program','info','info','info','dashboard'])]:
             steps=article.xpath('.//*[@data-source-id=$id]/ol/li',id=str(block_id))
             assert [s.get('data-flow-tone') for s in steps]==tones
             assert steps[-1].xpath('./span/br')
