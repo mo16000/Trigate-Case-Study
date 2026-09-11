@@ -35,6 +35,10 @@ The original document extraction remains unchanged. The user's later annotations
 Source blocks 53–57 receive teacher, Document Add, calendar, milk, and rocket-bold SVG icons respectively. Only the three metric cells in block 70 replace their illustrations with profile-2user, rocket-boldw, and bank SVGs; reused illustrations elsewhere remain unchanged. Blocks 64–66 form a three-column MVP screenshot gallery, separate from the flow diagram in block 62. The image18 caption is now “Curriculum page in the WordPress MVP.” The shared image control reads “Expand.”
 # Main Version annotation updates
 
+## Coaching report workflow annotations
+
+The original workflow now has a single “Original Coaching Report Flow” heading and a three-column, expandable screenshot grid for meeting summary, tasks, and startup health evaluation. The old diagram and duplicated screenshots (165, image65.emf, 174, 176, 186) are omitted from the page, while original source files are retained. Supplied 1r.svg follows the redesigned report flow; 2r.svg and 2r2.svg form a two-column task grid; tr.svg follows the Telegram flow. Explicit flow-tone arrays preserve the exact requested background/border colors and black text without changing unannotated steps. Telegram step 211 reads “Select the overall status.”
+
 ## Removing the Drop-off follow-up
 
 The three dashboard steps also use the specified #EEEEFA fill, #D0CFF1 border, and black text. “Business and UX Impact” has no trailing colon; its paragraph formatting is preserved.

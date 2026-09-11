@@ -145,6 +145,13 @@ export const chapters = [
 ] as const;
 export type Chapter = (typeof chapters)[number];
 export const visualLabels: Record<string, string> = {
+  'coaching-summary.png': 'Meeting summary',
+  'coaching-tasks-original.png': 'Tasks',
+  'coaching-health.png': 'Startup health evaluation',
+  'coaching-redesign.svg': 'Redesigned coaching report',
+  'coaching-tasks.svg': 'Dedicated task management area',
+  'coaching-task-detail.svg': 'Adding and reviewing tasks',
+  'coaching-telegram.svg': 'Coaching report submission through Telegram',
   'image1.png': 'TrigUp managers',
   'image3.png': 'IEE staff',
   'image5.png': 'Startup teams',

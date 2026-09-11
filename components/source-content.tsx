@@ -39,6 +39,17 @@ const uiFeatureIcons: Record<number, { name: string; sourceId?: number }> = {
   100: { name: 'image41.png' },
   104: { name: 'image45.png', sourceId: 103 },
 };
+const coachingFlowTones: Record<number, (string | undefined)[]> = {
+  166: ['dashboard', 'role', 'program', 'info', 'info', 'info', 'program'],
+  187: ['dashboard', 'program', 'info', 'program'],
+  193: ['dashboard', 'dashboard', 'program', 'info', 'program'],
+  208: [undefined, 'info', 'info', 'info', 'program', undefined],
+};
+const coachingFlowImages: Record<number, string[]> = {
+  187: ['coaching-redesign.svg'],
+  193: ['coaching-tasks.svg', 'coaching-task-detail.svg'],
+  208: ['coaching-telegram.svg'],
+};
 export function RichText({ runs }: { runs: Run[] }) {
   return (
     <>
@@ -78,10 +89,12 @@ export function Flow({
   steps,
   label,
   registration = false,
+  tones,
 }: {
   steps: string[];
   label: string;
   registration?: boolean;
+  tones?: (string | undefined)[];
 }) {
   const tone = (step: string) => {
     if (!registration) return undefined;
@@ -110,7 +123,7 @@ export function Flow({
   return (
     <ol className="flow-steps" aria-label={label}>
       {steps.map((step, i) => (
-        <li key={i} data-flow-tone={tone(step)}>
+        <li key={i} data-flow-tone={tones?.[i] ?? tone(step)}>
           <span className="step-index">{String(i + 1).padStart(2, '0')}</span>
           <span>
             {registration && step === 'Dashboard (Pending Review)' ? (
@@ -131,11 +144,17 @@ export function Flow({
     </ol>
   );
 }
-function Gallery({ names }: { names: string[] }) {
+function Gallery({
+  names,
+  layout,
+}: {
+  names: string[];
+  layout?: 'three' | 'telegram';
+}) {
   const mvpScreens = names.join(',') === 'image17.png,image18.png,image19.png';
   return (
     <div
-      className={`evidence-gallery ${mvpScreens ? 'gallery-mvp' : names.length > 1 ? 'gallery-pair' : ''}`}
+      className={`evidence-gallery ${layout === 'three' ? 'gallery-three' : layout === 'telegram' ? 'gallery-telegram' : mvpScreens ? 'gallery-mvp' : names.length > 1 ? 'gallery-pair' : ''}`}
     >
       {names.map((name) => (
         <CaseImage
@@ -300,7 +319,22 @@ export function SourceContent({
       continue;
     }
     // Keep each UI illustration immediately above its related subheading.
-    if ([89, 93, 103, 134].includes(b.id)) continue;
+    if ([89, 93, 103, 134, 165, 174, 176, 186].includes(b.id)) continue;
+    if (b.id === 167) {
+      output.push(
+        <div key={b.id} data-source-id={b.id}>
+          <Gallery
+            names={[
+              'coaching-summary.png',
+              'coaching-tasks-original.png',
+              'coaching-health.png',
+            ]}
+            layout="three"
+          />
+        </div>,
+      );
+      continue;
+    }
     if ([187, 193, 208].includes(b.id)) {
       const last = b.id === 187 ? 190 : b.id === 193 ? 197 : 213;
       const group = selected.filter(
@@ -317,6 +351,7 @@ export function SourceContent({
         <div key={b.id} data-source-ids={group.map((x) => x.id).join(',')}>
           <Flow
             steps={steps}
+            tones={coachingFlowTones[b.id]}
             label={
               b.id === 187
                 ? 'Redesigned in-product flow'
@@ -324,6 +359,10 @@ export function SourceContent({
                   ? 'Decoupled task workflow'
                   : 'Telegram workflow'
             }
+          />
+          <Gallery
+            names={coachingFlowImages[b.id]}
+            layout={b.id === 208 ? 'telegram' : undefined}
           />
         </div>,
       );
@@ -344,11 +383,12 @@ export function SourceContent({
       output.push(
         <div key={b.id} className="source-flow" data-source-id={b.id}>
           {heading && <h2 id={`section-${b.id}`}>{heading}</h2>}
-          {b.id === 166 && <h3>Original Flow:</h3>}
+          {b.id === 166 && <h3>Original Coaching Report Flow</h3>}
           <Flow
             steps={steps}
             label={heading || 'User flow'}
             registration={b.id === 133 || b.id === 143}
+            tones={coachingFlowTones[b.id]}
           />
           {b.images.length > 0 && b.id !== 143 && <Gallery names={b.images} />}{' '}
           {b.id === 143 && (
