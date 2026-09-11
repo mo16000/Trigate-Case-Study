@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import SiteNav from '@/components/site-nav';
+import { assetPath, pagePath } from '@/lib/site-path';
 
 export const metadata: Metadata = {
   title: 'Trigate — UX Case Study',
+  icons: { icon: assetPath('/favicon.svg') },
   description:
     'How Trigate evolved from a WordPress MVP into a white-label innovation management SaaS serving 6,000+ startup users.',
 };
@@ -22,18 +24,18 @@ export default function RootLayout({
         <footer className="site-footer page-width">
           <a
             className="footer-brand"
-            href="/"
+            href={pagePath('/')}
             aria-label="Trigate case study overview"
           >
             <img
-              src="/assets/Trigate-Logo-2.svg"
+              src={assetPath('/assets/Trigate-Logo-2.svg')}
               width={150}
               height={20}
               alt="Trigate"
             />
           </a>
           <span>A four-year product design journey · 2021–2025</span>
-          <a href="/#chapters">Explore the case study</a>
+          <a href={pagePath('/#chapters')}>Explore the case study</a>
         </footer>
       </body>
     </html>

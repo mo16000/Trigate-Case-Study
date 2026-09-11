@@ -2,6 +2,7 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import HeroAnimation from './hero-animation';
 import { chapters, sourceText } from '@/lib/case-study';
 import { AssetImage } from '@/components/case-image';
+import { pagePath } from '@/lib/site-path';
 
 export default function Overview() {
   return (
@@ -105,7 +106,7 @@ export default function Overview() {
             the product forward.
           </h2>
           <div className="outcomes-grid">
-            <a href="/the-main-version#section-117">
+            <a href={pagePath('/the-main-version#section-117')}>
               <strong>9 → 22</strong>
               <h3>Innovation organizations</h3>
               <p>
@@ -116,7 +117,7 @@ export default function Overview() {
                 Read the strategic pivot <ArrowUpRight size={17} />
               </span>
             </a>
-            <a href="/removing-the-drop-off#section-153">
+            <a href={pagePath('/removing-the-drop-off#section-153')}>
               <strong>21.16% → 0%</strong>
               <h3>Registration drop-off</h3>
               <p>
@@ -127,7 +128,7 @@ export default function Overview() {
                 Explore the redesign <ArrowUpRight size={17} />
               </span>
             </a>
-            <a href="/coaching-report-workflow#section-214">
+            <a href={pagePath('/coaching-report-workflow#section-214')}>
               <strong>100%</strong>
               <h3>Active TrigUp coach adoption</h3>
               <p>
@@ -159,7 +160,7 @@ export default function Overview() {
         </div>
         <div className="chapter-cards">
           {chapters.map((c) => (
-            <a href={'/' + c.slug} className="chapter-card" key={c.slug}>
+            <a href={pagePath('/' + c.slug)} className="chapter-card" key={c.slug}>
               <span className="card-number">{c.number}</span>
               <div className="chapter-card-copy">
                 <span className="eyebrow">{c.eyebrow}</span>

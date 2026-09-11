@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight, ArrowUp } from 'lucide-react';
 import { chapters } from '@/lib/case-study';
+import { pagePath } from '@/lib/site-path';
 import { SourceContent } from '@/components/source-content';
 import { ChapterToc } from '@/components/chapter-toc';
 type Props = { params: Promise<{ chapter: string }> };
@@ -25,7 +26,7 @@ export default async function ChapterPage({ params }: Props) {
   return (
     <main id="main-content">
       <div className="chapter-header page-width" id="top">
-        <a className="back-link" href="/">
+        <a className="back-link" href={pagePath('/')}>
           <ArrowLeft size={16} /> Overview
         </a>
         <div className="chapter-heading-row">
@@ -59,7 +60,7 @@ export default async function ChapterPage({ params }: Props) {
         className="chapter-pagination page-width"
         aria-label="Previous and next chapters"
       >
-        <a href={previous ? `/${previous.slug}` : '/'}>
+        <a href={pagePath(previous ? `/${previous.slug}` : '/')}>
           <span>
             <ArrowLeft size={17} />
             {previous ? 'Previous chapter' : 'Back to overview'}
@@ -68,7 +69,7 @@ export default async function ChapterPage({ params }: Props) {
             {previous?.title || 'The complete story, in two minutes'}
           </strong>
         </a>
-        <a href={next ? `/${next.slug}` : '/'} className="next-chapter">
+        <a href={pagePath(next ? `/${next.slug}` : '/')} className="next-chapter">
           <span>
             {next ? `Next · Chapter ${next.number}` : 'Return to overview'}
             <ArrowRight size={17} />

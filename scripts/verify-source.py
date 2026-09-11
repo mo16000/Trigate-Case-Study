@@ -1,5 +1,5 @@
 """Check source coverage, final copy, routes, anchors and placed media in rendered HTML."""
-import json, re
+import json, re, sys
 from pathlib import Path
 from urllib.request import urlopen
 from lxml import html
@@ -14,7 +14,13 @@ chapters=[('where-it-started',29,74),('the-main-version',77,121),('removing-the-
 def norm(t): return re.sub(r'\s+','',t.replace('\uf0b7','•'))
 errors=[]; reports=[]
 for route,start,end in chapters:
-    dom=html.fromstring(urlopen('http://localhost:3000/'+route).read())
+    if '--pages' in sys.argv:
+        dom=html.fromstring((ROOT/'out'/route/'index.html').read_bytes())
+        # Compare the static export to the same source assertions, ignoring only its mount prefix.
+        for image in dom.xpath('//img[@src]'):
+            image.set('src',image.get('src').removeprefix('/Trigate-Case-Study'))
+    else:
+        dom=html.fromstring(urlopen('http://localhost:3000/'+route).read())
     article=dom.xpath('//*[@class="chapter-content"]')[0]
     if route=='co-founder-matching':
         founder=article.xpath('.//figure[.//img[@src=$src]]',src=media['image69.png']['src'])

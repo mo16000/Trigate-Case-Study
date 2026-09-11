@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { assetPath } from '@/lib/site-path';
 import { ArrowRight } from 'lucide-react';
 import {
   Table,
@@ -183,7 +184,7 @@ function CellContent({
             mvpMetrics && mvpMetricIcons[name] ? (
               <img
                 key={name}
-                src={`/assets/mvp/${mvpMetricIcons[name]}`}
+                src={assetPath(`/assets/mvp/${mvpMetricIcons[name]}`)}
                 alt=""
                 className="cell-illustration"
                 width={32}
@@ -459,7 +460,7 @@ export function SourceContent({
             >
               {mvpFeatureIcons[p.id] && (
                 <img
-                  src={`/assets/mvp/${mvpFeatureIcons[p.id]}`}
+                  src={assetPath(`/assets/mvp/${mvpFeatureIcons[p.id]}`)}
                   alt=""
                   width={32}
                   height={32}

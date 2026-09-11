@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { AnimationItem } from 'lottie-web';
 import { Pause, Play } from 'lucide-react';
+import { assetPath } from '@/lib/site-path';
 
 export default function HeroAnimation() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -21,7 +22,7 @@ export default function HeroAnimation() {
           renderer: 'svg',
           loop: true,
           autoplay: !preference.matches,
-          path: '/assets/hero-animation.json',
+          path: assetPath('/assets/hero-animation.json'),
           rendererSettings: { preserveAspectRatio: 'xMidYMid meet' },
         });
         animationRef.current = animation;
@@ -67,7 +68,7 @@ export default function HeroAnimation() {
       <div className="hero-animation-stage">
         <img
           className="hero-still"
-          src="/assets/source/image29-1280.webp"
+          src={assetPath('/assets/source/image29-1280.webp')}
           width={1280}
           height={916}
           alt="Trigate dashboard with programs, applications, and analytics"

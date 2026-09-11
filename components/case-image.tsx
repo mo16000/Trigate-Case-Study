@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/dialog';
 import mediaData from '@/content/media.json';
 import mediaOverrides from '@/content/media-overrides.json';
+import { assetPath } from '@/lib/site-path';
 type Asset = {
   src: string;
   width: number;
@@ -35,9 +36,9 @@ export function AssetImage({
   return (
     <img
       className={className}
-      src={asset.src}
+      src={assetPath(asset.src)}
       srcSet={[...asset.variants, { src: asset.src, width: asset.width }]
-        .map((v) => `${v.src} ${v.width}w`)
+        .map((v) => `${assetPath(v.src)} ${v.width}w`)
         .join(', ')}
       sizes={sizes}
       width={asset.width}
@@ -110,7 +111,7 @@ export function CaseImage({
             aria-label="Image detail; scroll to inspect"
           >
             <img
-              src={asset.src}
+              src={assetPath(asset.src)}
               alt={alt}
               width={asset.width}
               height={asset.height}

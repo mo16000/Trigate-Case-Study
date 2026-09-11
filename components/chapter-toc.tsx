@@ -1,4 +1,5 @@
 import { ArrowLeft, ChevronDown } from 'lucide-react';
+import { pagePath } from '@/lib/site-path';
 import { sourceText, uiFeatureHeadings, type Chapter } from '@/lib/case-study';
 export function ChapterToc({ chapter }: { chapter: Chapter }) {
   const links = chapter.sections.map((id) => (
@@ -22,7 +23,7 @@ export function ChapterToc({ chapter }: { chapter: Chapter }) {
         </summary>
         <nav aria-label="On this page">{links}</nav>
       </details>
-      <a className="aside-overview" href="/">
+      <a className="aside-overview" href={pagePath('/')}>
         <ArrowLeft size={15} /> Back to overview
       </a>
     </aside>

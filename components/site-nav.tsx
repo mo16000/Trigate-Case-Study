@@ -1,6 +1,7 @@
 'use client';
 import { usePathname, useRouter } from 'next/navigation';
 import { chapters } from '@/lib/case-study';
+import { assetPath, pagePath, basePath } from '@/lib/site-path';
 import {
   Select,
   SelectContent,
@@ -15,12 +16,13 @@ const pages = [
 export default function SiteNav() {
   const pathname = usePathname();
   const router = useRouter();
-  const current = pages.find((page) => page.value === pathname) ?? pages[0];
+  const localPath = (pathname?.replace(new RegExp(`^${basePath}(?=/|$)`), '').replace(/\/$/, '') || '/');
+  const current = pages.find((page) => page.value === localPath) ?? pages[0];
   return (
     <header className="site-header">
-      <a className="brand" href="/" aria-label="Trigate case study overview">
+      <a className="brand" href={pagePath('/')} aria-label="Trigate case study overview">
         <img
-          src="/assets/Trigate-Logo-2.svg"
+          src={assetPath('/assets/Trigate-Logo-2.svg')}
           width={150}
           height={20}
           alt="Trigate"
@@ -32,7 +34,7 @@ export default function SiteNav() {
           items={pages}
           value={current.value}
           onValueChange={(value) => {
-            if (value && value !== pathname) router.push(value);
+            if (value && value !== localPath) router.push(basePath ? `${value.replace(/\/$/, '')}/` : value);
           }}
         >
           <SelectTrigger
