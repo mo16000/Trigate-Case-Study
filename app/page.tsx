@@ -37,7 +37,7 @@ export default function Overview() {
           </div>
           <div>
             <span>Product</span>
-            <strong>B2B SaaS · Innovation management</strong>
+            <strong>B2B SaaS · B2C · C2C</strong>
           </div>
         </div>
       </section>
