@@ -52,7 +52,7 @@ for route,start,end in chapters:
         assert all(media[n]['src'] not in imgs for n in ['image65.emf','image68.emf','image43.png','image66.png','image67.png'])
         original=article.xpath('.//*[@data-source-id="167"]/*[contains(@class,"gallery-three")]/figure')
         assert len(original)==3
-        flows=[('166',['dashboard','role','program','info','info','info','program'],[]),('187,188,189,190',['dashboard','program','info','program'],['1r.svg']),('193,194,195,196,197',['dashboard','dashboard','program','info','program'],['2r.svg','2r2.svg']),('208,209,210,211,212,213',[None,'info','info','info','program',None],['tr.svg'])]
+        flows=[('166',['dashboard','role','program','info','info','info','program'],[]),('187,188,189,190',['dashboard','program','info','program'],['1r.svg']),('193,194,195,196,197',['dashboard','dashboard','program','info','program'],['2r.svg','2r2.svg']),('208,209,210,211,212,213',[None,'info','info','info','program',None],['tr.png'])]
         for ids,tones,files in flows:
             wrapper=article.xpath('.//*[@data-source-id=$ids or @data-source-ids=$ids]',ids=ids)[0]
             assert [s.get('data-flow-tone') for s in wrapper.xpath('./ol/li')]==tones

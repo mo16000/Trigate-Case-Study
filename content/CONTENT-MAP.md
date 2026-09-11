@@ -37,6 +37,8 @@ Source blocks 53–57 receive teacher, Document Add, calendar, milk, and rocket-
 
 ## Coaching report workflow annotations
 
+The subsequent Telegram annotation replaces the displayed tr.svg with the supplied tr.png, preserving its 379 × 792 proportions and existing placement.
+
 The original workflow now has a single “Original Coaching Report Flow” heading and a three-column, expandable screenshot grid for meeting summary, tasks, and startup health evaluation. The old diagram and duplicated screenshots (165, image65.emf, 174, 176, 186) are omitted from the page, while original source files are retained. Supplied 1r.svg follows the redesigned report flow; 2r.svg and 2r2.svg form a two-column task grid; tr.svg follows the Telegram flow. Explicit flow-tone arrays preserve the exact requested background/border colors and black text without changing unannotated steps. Telegram step 211 reads “Select the overall status.”
 
 ## Removing the Drop-off follow-up
