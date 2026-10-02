@@ -28,7 +28,7 @@ for route,start,end in chapters:
     for decorative in article.xpath('.//figcaption | .//*[@class="step-index"] | .//*[@class="image-expand"]'):
         decorative.drop_tree()
     text=norm(''.join(article.itertext()))
-    source_blocks=[b for b in data['blocks'] if start<b['id']<=end and b['id'] not in [134,165,174,176,186]]
+    source_blocks=[b for b in data['blocks'] if start<b['id']<=end and b['id'] not in [45,46,47,48,134,165,174,176,186]]
     visible_ids=[]
     for el in article.xpath('.//*[@data-source-id or @data-source-ids]'):
         visible_ids+=list(map(int,(el.get('data-source-id') or el.get('data-source-ids')).split(',')))
@@ -43,6 +43,10 @@ for route,start,end in chapters:
             expected_media += [f'/assets/mvp/{metric_icons[n]}' if b['id']==70 and n in metric_icons else media[n]['src'] for n in retained_images]
             # Flow arrows / steps are web presentation; preserve their text, excluding separators.
             expected_text=text_overrides.get(str(b['id']),p['text'])
+            if b['id']==36: expected_text=''
+            if b['id'] in [43,50]: expected_text=expected_text.replace('IEEs','innovation institutes')
+            if b['id']==35: expected_text=expected_text.replace('3 startup teams','4 startup teams')
+            if b['id']==70: expected_text={'300+':'500+','80+':'140+','9':'5','IEEs using the Trigate-branded MVP':'Innovation institutes using the MVP'}.get(expected_text.strip(),expected_text)
             if b['id']==248 and expected_text.strip() in ['up','down']: expected_text=''
             if b['id']==79: expected_text=expected_text.replace('Core Needs:','')
             if b['id']==153: expected_text=expected_text.replace('Business and UX Impact:','Business and UX Impact')
@@ -95,6 +99,25 @@ for route,start,end in chapters:
             assert header[0].xpath('.//img') and header[1] is heading[0]
             assert not header.xpath('.//button')
     if route=='where-it-started':
+        research=json.loads((ROOT/'content/phase-one.json').read_text())
+        def verify_import(value):
+            if isinstance(value,list):
+                for child in value: verify_import(child)
+            elif isinstance(value,dict):
+                assert norm(value['text']) in text, value['text']
+                assert all(icon in imgs for icon in value['icons'])
+        verify_import(research['objectives'])
+        verify_import(research['results'])
+        verify_import(research['comparison'])
+        assert all(norm(heading) in text for heading in research['headings'])
+        assert not article.xpath('.//*[@id="section-45" or @data-source-id="45" or @data-source-id="46" or @data-source-id="47" or @data-source-id="48"]')
+        assert '4 startup teams' in ''.join(article.itertext())
+        assert article.xpath('.//*[@data-source-id="70"]/article/p[1]/strong/text()')==['500+','140+','5']
+        final_card=article.xpath('.//*[@data-source-id="74"]/article')
+        assert len(final_card)==1 and len(final_card[0].xpath('./ul/li'))==2
+        assert final_card[0].xpath('./a[text()="Next Chapter" and contains(@href,"/the-main-version")]')
+        assert final_card[0].xpath('./p[text()="We will read more about this in the next chapter."]')
+        assert len(article.xpath('.//*[@aria-label="Phase one competitive analysis"]//tbody/tr'))==10
         for icon in ['teacher.svg','Document Add.svg','calendar.svg','milk.svg','rocket-bold.svg']:
             if f'/assets/mvp/{icon}' not in imgs: errors.append(f'Missing MVP feature icon: {icon}')
         gallery=article.xpath('.//*[contains(concat(" ",normalize-space(@class)," ")," gallery-mvp ")]')

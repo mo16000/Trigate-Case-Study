@@ -16,6 +16,21 @@ export type SourceTable = { type: 'table'; id: number; rows: Cell[][] };
 export type Block = Paragraph | SourceTable;
 const revisedText = textOverrides as Record<number, string>;
 export const blocks = (source.blocks as Block[]).map((block): Block => {
+  if (block.type === 'paragraph' && [43, 50].includes(block.id)) {
+    return { ...block, text: block.text.replaceAll('IEEs', 'innovation institutes'),
+      runs: block.runs.map((run) => ({ ...run, text: run.text.replaceAll('IEEs', 'innovation institutes') })) };
+  }
+  if (block.type === 'table' && [35, 70].includes(block.id)) {
+    const replacements: Record<string, string> = block.id === 35
+      ? { '3 startup teams': '4 startup teams' }
+      : { '300+': '500+', '80+': '140+', '9': '5', 'IEEs using the Trigate-branded MVP': 'Innovation institutes using the MVP' };
+    return { ...block, rows: block.rows.map((row) => row.map((cell) => ({ ...cell,
+      paragraphs: cell.paragraphs.map((p) => {
+        const text = replacements[p.text.trim()];
+        return text ? { ...p, text, runs: [{ text, bold: p.runs.some((r) => r.bold), italic: false }] } : p;
+      }),
+    }))) };
+  }
   if (block.type === 'paragraph' && block.id === 153) {
     const removeImpactColon = (text: string) =>
       text.replace('Business and UX Impact:', 'Business and UX Impact');
@@ -102,8 +117,8 @@ export const chapters = [
     description:
       'From an operational problem to a working MVP. Research, strategic choices, and six months of market validation.',
     image: 'image17.png',
-    takeaway: '300+ registered users in the MVP',
-    sections: [34, 38, 45, 49, 51, 68, 71],
+    takeaway: '500+ registered users in the MVP',
+    sections: [34, 38, 49, 51, 68, 71],
   },
   {
     slug: 'the-main-version',

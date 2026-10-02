@@ -930,6 +930,46 @@ svg {
   padding: 25px;
   color: var(--brand);
 }
+.implications-next {
+  grid-template-columns: 1fr;
+}
+.implications-next ul {
+  list-style: disc;
+  padding-left: 1.3em;
+  margin: 0 0 24px;
+}
+.implications-next li + li {
+  margin-top: 12px;
+}
+.implications-next .primary-link {
+  margin-top: 16px;
+}
+.research-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 20px;
+  margin: 24px 0 40px;
+}
+.research-cards article {
+  min-width: 0;
+  padding: 24px;
+  background: var(--wash);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.research-icons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.research-icons img { width: 40px; height: 40px; }
+.phase-one-research > h3 { font-size: clamp(1.3rem, 1.8vw, 1.65rem); line-height: 1.4; font-weight: 650; margin: 36px 0 20px; }
+.research-cards h4 { font-size: 1rem; line-height: 1.5; font-weight: 600; margin: 16px 0 12px; }
+.research-cards ul { list-style: disc; padding-left: 1.2em; margin: 0; }
+.research-cards li { font-size: 1rem; line-height: 1.6; }
+.research-cards li + li { margin-top: 10px; }
+.phase-one-comparison .comparison-table { min-width: 1650px; }
+.phase-one-comparison td, .phase-one-comparison th { white-space: pre-line; }
 .role-needs {
   grid-template-columns: 1fr 1fr;
   gap: 22px;

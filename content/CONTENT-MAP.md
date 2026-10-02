@@ -25,6 +25,10 @@ Source: Doc3.docx, supplied September 8, 2026. Block IDs are the original Word b
 - The co-founder feature is a strategic exploration and postponement decision, not a shipped matching product.
 - Generated responsive WebP derivatives retain original-resolution lossless copies. Figures open their full-resolution version for detailed inspection.
 
+## October 1 — Phase one annotations
+
+`phase-one.json` preserves the supplied `phase 1.docx` interview objectives, results, and ten-competitor comparison, with its embedded SVG icons. It replaces paragraph 36; the prior competitive analysis blocks 45–48 and their TOC link are omitted. The comparison is transposed for readable competitor rows without losing any attributes. Interview startup count is four. Only paragraphs 43 and 50 replace “IEEs” with “innovation institutes.” Paragraph 69 uses the supplied six-month introduction. Metrics are 500+, 140+, and 5, with the revised institute label and synchronized 500+ chapter takeaway. Block 74 becomes one card with two bullets, the supplied closing sentence, and a base-path-safe Next Chapter link. Original document extraction remains unchanged.
+
 ## Co-founder matching annotation updates
 
 The founder illustration remains in its original frame but has no expansion control or visible caption. Table 248 retains all nine directional arrows with accessible image labels, while its visible “up” and “down” text is omitted. The closing overview link reads “TRIGATE: An Innovation Management Platform.” Original extracted source remains unchanged.

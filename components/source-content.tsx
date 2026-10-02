@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
-import { assetPath } from '@/lib/site-path';
+import { assetPath, pagePath } from '@/lib/site-path';
+import { PhaseOneResearch } from './phase-one-research';
 import { ArrowRight } from 'lucide-react';
 import {
   Table,
@@ -212,6 +213,18 @@ function CellContent({
   );
 }
 function SourceTableView({ block }: { block: SourceTable }) {
+  if (block.id === 74) {
+    return (
+      <div className="source-cards implications implications-next" data-source-id={block.id}>
+        <article>
+          <ul>{block.rows.flatMap((row) => row.flatMap((cell) => cell.paragraphs))
+            .filter((p) => p.text.trim()).map((p, i) => <li key={i}><RichText runs={p.runs} /></li>)}</ul>
+          <p>We will read more about this in the next chapter.</p>
+          <a className="primary-link" href={pagePath('/the-main-version')}>Next Chapter</a>
+        </article>
+      </div>
+    );
+  }
   if ([35, 39, 70, 74, 79, 127].includes(block.id)) {
     const mode = (
       {
@@ -322,7 +335,11 @@ export function SourceContent({
       continue;
     }
     // Keep each UI illustration immediately above its related subheading.
-    if ([89, 93, 103, 134, 165, 174, 176, 186].includes(b.id)) continue;
+    if ([45, 46, 47, 48, 89, 93, 103, 134, 165, 174, 176, 186].includes(b.id)) continue;
+    if (b.id === 36) {
+      output.push(<PhaseOneResearch key={b.id} />);
+      continue;
+    }
     if (b.id === 167) {
       output.push(
         <div key={b.id} data-source-id={b.id}>

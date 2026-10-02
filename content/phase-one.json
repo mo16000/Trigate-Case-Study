@@ -1,0 +1,833 @@
+{
+  "headings": [
+    "Stakeholder Interview Objectives",
+    "Stakeholder Interview results",
+    "Competitive Analysis",
+    "Following that, I conducted a competitive analysis to evaluate how competitors implemented each module."
+  ],
+  "objectives": [
+    [
+      {
+        "text": "",
+        "list": false,
+        "icons": [
+          "/assets/phase-one/image2.svg",
+          "/assets/phase-one/image4.svg"
+        ]
+      },
+      {
+        "text": "TrigUp managers & staff",
+        "list": false,
+        "icons": []
+      },
+      {
+        "text": "Identify the starting point & product modules matching needs",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "Auditing current startup engagement workflows",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "extracting core acceleration process requirements",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "uncover existing challenges in managing and engaging with startups.",
+        "list": true,
+        "icons": []
+      }
+    ],
+    [
+      {
+        "text": "",
+        "list": false,
+        "icons": [
+          "/assets/phase-one/image6.svg"
+        ]
+      },
+      {
+        "text": "startup teams",
+        "list": false,
+        "icons": []
+      },
+      {
+        "text": "Identify the product modules & product modules aligned with startup needs",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "Evaluating founder behaviors regarding training, mentoring, and support resources",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "diagnosing systemic challenges faced during the acceleration lifecycle.",
+        "list": true,
+        "icons": []
+      }
+    ],
+    [
+      {
+        "text": "",
+        "list": false,
+        "icons": [
+          "/assets/phase-one/image8.svg"
+        ]
+      },
+      {
+        "text": "Coaches",
+        "list": false,
+        "icons": []
+      },
+      {
+        "text": "identify the starting point & product modules aligned with coach needs",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "evaluate existing methods of interacting with assigned startup teams.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "Analyze existing interaction flows with accelerator",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "identify core friction points during startup coaching sessions",
+        "list": true,
+        "icons": []
+      }
+    ]
+  ],
+  "results": [
+    [
+      {
+        "text": "",
+        "list": false,
+        "icons": [
+          "/assets/phase-one/image2.svg",
+          "/assets/phase-one/image4.svg"
+        ]
+      },
+      {
+        "text": "TrigUp Managers & Staff Needs:",
+        "list": false,
+        "icons": []
+      },
+      {
+        "text": "Admission Evaluation: Assessing startup viability for entry into the acceleration phase.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "Fundraising Guidance: Supporting startup teams to successfully reach the investment readiness stage.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "General Education: Providing baseline startup training and educational materials.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "Activity Monitoring: Reviewing and tracking ongoing startup operational activities.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "TrigUp Managers & Staff Interview Results:",
+        "list": false,
+        "icons": []
+      },
+      {
+        "text": "Repetitive Onboarding: Staff repeatedly deliver identical training modules and core instructions to every startup.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "Fragmented Data Collection: Lack of integration and unified systems when receiving startup files and documentation.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "Visibility Gaps: A clear need for a more precise, real-time method to track startup progress and growth trajectories.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "",
+        "list": false,
+        "icons": []
+      }
+    ],
+    [
+      {
+        "text": "",
+        "list": false,
+        "icons": [
+          "/assets/phase-one/image6.svg"
+        ]
+      },
+      {
+        "text": "startup teams",
+        "list": false,
+        "icons": []
+      },
+      {
+        "text": "Startup Needs:",
+        "list": false,
+        "icons": []
+      },
+      {
+        "text": "Ideation Frameworks: Structuring initial business concepts to achieve problem-solution fit before entering the program.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "Documentation Compliance: Completing the specific files and documentation required by the accelerator for evaluation.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "Startup Interview Results:",
+        "list": false,
+        "icons": []
+      },
+      {
+        "text": "Knowledge Gaps: Founders often lack baseline business and general startup operational knowledge.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "Mentorship Reliance: Mentoring sessions are the primary and most heavily utilized method for problem-solving.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "Talent Bottlenecks: Significant challenges regarding recruiting, onboarding, and retaining team members.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "",
+        "list": false,
+        "icons": []
+      }
+    ],
+    [
+      {
+        "text": "",
+        "list": false,
+        "icons": [
+          "/assets/phase-one/image8.svg"
+        ]
+      },
+      {
+        "text": "Coaches",
+        "list": false,
+        "icons": []
+      },
+      {
+        "text": "Coaches & Mentors Needs:",
+        "list": false,
+        "icons": []
+      },
+      {
+        "text": "Growth Support: Guiding startups through documentation completion and accelerating them toward investment readiness.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "Collaborative Goal Setting: Establishing clear, mutually agreed-upon KPIs with startup founders.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "Milestone Auditing: Reviewing startup activities directly against their established KPIs.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "Coaches & Mentors Interview Results:",
+        "list": false,
+        "icons": []
+      },
+      {
+        "text": "Disjointed Document Management: Experiencing a fragmented process when collecting and reviewing startup files.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "Tracking Limitations: A distinct need for closer, data-driven monitoring of each startup's operational status.",
+        "list": true,
+        "icons": []
+      },
+      {
+        "text": "Process Friction: Ongoing workflow and operational hurdles related to coaching and mentorship management.",
+        "list": true,
+        "icons": []
+      }
+    ]
+  ],
+  "comparison": [
+    [
+      [
+        {
+          "text": "Competitor",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Winohub 🇮🇷",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "HamAva 🇮🇷",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Nexino Lab 🇮🇷",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Jahesh Academy 🇮🇷",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Ycombinator 🇺🇸",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Leanstack 🇺🇸",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Br.f.Billion 🇺🇸 🇪🇸",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Clarity 🇺🇸",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Accelerator Software 🇦🇺",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "What a Venture 🇦🇹",
+          "list": false,
+          "icons": []
+        }
+      ]
+    ],
+    [
+      [
+        {
+          "text": "Value Proposition",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Providing a fully virtual accelerator experience.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Providing a fully virtual accelerator experience.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Producing educational content + designing a training framework via standalone courses.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Producing educational content + designing a training framework via standalone courses.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Providing a hybrid approach to select aspects of online acceleration.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Providing a hybrid approach to select aspects of online acceleration. Specialized service (focused on personal branding).",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Providing a hybrid approach to select aspects of online acceleration.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Deploying mentoring products directly to startup teams.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Providing a digital infrastructure to manage and drive accelerator operations.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Providing a hybrid approach to select aspects of online acceleration.",
+          "list": false,
+          "icons": []
+        }
+      ]
+    ],
+    [
+      [
+        {
+          "text": "Type",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Online Accelerator",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Online Accelerator (Inactive)",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Startup Accelerator",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Startup Accelerator",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Startup Accelerator",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Corporate Innovation Enterprise",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Corporate Innovation Enterprise",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Mentorship Marketplace",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Software Design & Development Enterprise",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Corporate Innovation Enterprise",
+          "list": false,
+          "icons": []
+        }
+      ]
+    ],
+    [
+      [
+        {
+          "text": "Core Features",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "• Training\n• Mentoring\n• Fundraising / Networking",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "• Training\n• Mentoring",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Multi-category training without rigid progression paths, supplemented by mentoring.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "General training.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "• Training\n• Co-founder matching\n• Discussion forums (networking)",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "• Training\n• Mentoring\n• Web-based auxiliary tools",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "• Training\n• Mentoring\n• Fundraising / Networking",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Streamlined registration designed to maximize onboarding conversion; avoids complex upfront filtering or auditing.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "A comprehensive feature suite engineered for virtual accelerators.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Innovation platform paired with digital training programs and tools.",
+          "list": false,
+          "icons": []
+        }
+      ]
+    ],
+    [
+      [
+        {
+          "text": "Key Advantage",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Complete digitization of accelerator operations paired with corporate tracking structures.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "---",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Dedicated resource allocation toward custom educational content production.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Utilization of experienced, recognizable instructors alongside a structured learning path.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Rich institutional experience, a comprehensive content archive, and continuously updated syllabus features.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Deep, knowledge-driven foundation with seamlessly integrated content and implementation tools.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Structured, meticulous curriculum and highly controlled mentorship workflows.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "High volume and diverse selection of active mentors.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Robust, end-to-end software infrastructure.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Unified platform design and corporate framework integration.",
+          "list": false,
+          "icons": []
+        }
+      ]
+    ],
+    [
+      [
+        {
+          "text": "Revenue Model",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Custom pricing plans (Individual / Team / Corporate)",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "--------",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Per-course sales",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Per-course sales (Gated)",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Free",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Monthly subscription",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "One-time fee (€300)",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Commission-based",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Monthly subscription",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Direct sales (?)",
+          "list": false,
+          "icons": []
+        }
+      ]
+    ],
+    [
+      [
+        {
+          "text": "Summary / Conclusion",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "An uneven, fragmented product that attempts to fix gaps by stacking an overwhelming number of features into a single layout.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "------",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "A pre-recorded collection of training tracks; unfortunately, it lacks a defined learning path, and the instructors are generally unrecognized.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "A pre-recorded content library that feels brief overall; due to short course timelines, its long-term instructional efficacy remains unverified.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "A well-integrated ecosystem that effectively blends educational resources, networks, and simplified product layouts into a practical solution.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "A well-integrated ecosystem that effectively blends educational resources, networks, and simplified product layouts into a practical solution.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "A robust product layer that prioritizes cramming a high volume of features into its system rather than optimizing deep design flows.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "A highly open, unvetted marketplace platform. Operating completely as an independent business, its loose controls make it highly scalable.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "Backed by a strong software firm, this standalone platform delivers a well-rounded and respectable product experience.",
+          "list": false,
+          "icons": []
+        }
+      ],
+      [
+        {
+          "text": "A compelling product ecosystem; the platform and tailored educational content appear well-optimized for corporate entrepreneurship.",
+          "list": false,
+          "icons": []
+        }
+      ]
+    ]
+  ]
+}
