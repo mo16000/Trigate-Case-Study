@@ -37,7 +37,7 @@ export default function Overview() {
           </div>
           <div>
             <span>Product</span>
-            <strong>B2B SaaS · B2C · C2C</strong>
+            <strong>B2B SaaS · B2C</strong>
           </div>
         </div>
       </section>
@@ -52,9 +52,10 @@ export default function Overview() {
         </div>
         <div className="metrics-row">
           {[
-            ['6,000+', 'startup users'],
-            ['20+', 'IEEs'],
-            ['31', 'provinces across Iran'],
+            ['7,000+', 'startup ideas'],
+            ['40+', 'innovation institutes'],
+            ['60+', 'different programs'],
+            ['All', 'provinces across Iran'],
             ['4 years', 'from zero to SaaS'],
           ].map(([value, label]) => (
             <div key={label}>

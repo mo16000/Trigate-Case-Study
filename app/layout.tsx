@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Trigate — UX Case Study',
   icons: { icon: assetPath('/favicon.svg') },
   description:
-    'How Trigate evolved from a WordPress MVP into a white-label innovation management SaaS serving 6,000+ startup users.',
+    'How Trigate evolved from a WordPress MVP into an innovation management platform serving 7,000+ startup ideas and 40+ innovation institutes across all 31 provinces of Iran.',
 };
 
 export default function RootLayout({

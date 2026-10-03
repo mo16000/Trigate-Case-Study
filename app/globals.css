@@ -418,12 +418,12 @@ svg {
 }
 .metrics-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   border-block: 1px solid var(--line);
   padding: 32px 0;
 }
 .metrics-row > div {
-  padding: 0 30px;
+  padding: 0 clamp(12px, 2vw, 24px);
   border-right: 1px solid var(--line);
   display: grid;
   gap: 10px;
@@ -443,6 +443,11 @@ svg {
 .metrics-row span {
   font-size: 0.86rem;
   color: var(--muted);
+}
+@media (min-width: 561px) and (max-width: 900px) {
+  .metrics-row { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 28px; }
+  .metrics-row > div:nth-child(3) { border-right: 0; }
+  .metrics-row > div:nth-child(4) { padding-left: 0; }
 }
 .overview-preview {
   padding-top: 50px;
@@ -1788,8 +1793,9 @@ svg {
   .metrics-row > div:nth-child(even) {
     border-right: 0;
   }
-  .metrics-row > div:nth-last-child(-n + 2) {
+  .metrics-row > div:last-child {
     border-bottom: 0;
+    grid-column: 1 / -1;
   }
   .metrics-row strong {
     font-size: 2.5rem;
