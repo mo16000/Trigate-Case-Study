@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { assetPath, pagePath } from '@/lib/site-path';
 import { PhaseOneResearch } from './phase-one-research';
+import { ProgramContent, CoachingContent, MainVersionResults, DeepDiveLinks } from './main-version-content';
 import { ArrowRight } from 'lucide-react';
 import {
   Table,
@@ -335,7 +336,10 @@ export function SourceContent({
       continue;
     }
     // Keep each UI illustration immediately above its related subheading.
-    if ([45, 46, 47, 48, 89, 93, 103, 134, 165, 174, 176, 186].includes(b.id)) continue;
+    if ([45, 46, 47, 48, 84, 89, 93, 103, 134, 165, 174, 176, 186].includes(b.id)) continue;
+    if (b.id === 91) { output.push(<ProgramContent key={b.id} />); continue; }
+    if (b.id === 101) { output.push(<CoachingContent key={b.id} />); continue; }
+    if (b.id === 117) { output.push(<MainVersionResults key={b.id} />); continue; }
     if (b.id === 36) {
       output.push(<PhaseOneResearch key={b.id} />);
       continue;
@@ -488,6 +492,7 @@ export function SourceContent({
               {p.images.length > 0 && <Gallery names={p.images} />}
             </li>
           ))}
+          {b.id === 109 && <li><strong>Program-Based Modularity:</strong> Innovation institutes run diverse acceleration programs and events across distinct investment stages. Consequently, they required the flexibility to customize their program roadmaps, educational curricula, committee members per program, and scheduling.</li>}
         </ul>,
       );
       continue;
@@ -548,6 +553,7 @@ export function SourceContent({
           </p>
         )}
         {b.images.length > 0 && <Gallery names={b.images} />}
+        {b.id === 121 && <DeepDiveLinks />}
       </div>,
     );
   }

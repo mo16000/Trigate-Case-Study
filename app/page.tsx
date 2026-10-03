@@ -107,11 +107,11 @@ export default function Overview() {
           </h2>
           <div className="outcomes-grid">
             <a href={pagePath('/the-main-version#section-117')}>
-              <strong>9 → 22</strong>
-              <h3>Innovation organizations</h3>
+              <strong>5 → 42</strong>
+              <h3>Innovation institutes</h3>
               <p>
-                Active users grew in the six months after introducing the
-                white-label plan.
+                Active innovation institutes grew in the nine months after introducing
+                program-based modularity and the white-label model.
               </p>
               <span>
                 Read the strategic pivot <ArrowUpRight size={17} />

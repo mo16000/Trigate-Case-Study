@@ -45,12 +45,21 @@ export const blocks = (source.blocks as Block[]).map((block): Block => {
   }
   if (block.type === 'paragraph' && revisedText[block.id]) {
     const text = revisedText[block.id];
-    return { ...block, text, runs: [{ text, bold: false, italic: false }] };
+    const emphasized = ['flexible, program-specific modularity', 'White-Label Model'];
+    const runs = block.id === 111
+      ? text.split(/(flexible, program-specific modularity|White-Label Model)/).map((text) => ({ text, bold: emphasized.includes(text), italic: false }))
+      : [{ text, bold: false, italic: false }];
+    return { ...block, text, runs };
   }
   if (block.type === 'table' && block.id === 79) {
+    const staffNeeds = block.rows[1][0].paragraphs.filter((p) => p.text.includes(':') && !p.text.includes('Core Needs:'));
+    const institution = block.rows[1][1];
+    const institutionParagraphs = institution.paragraphs.flatMap((p) => p.text.includes('IEE Administrators')
+      ? [{ ...p, text: 'Innovation Institute', runs: [{ text: 'Innovation Institute', bold: true, italic: false }] }, ...staffNeeds]
+      : [p]);
     return {
       ...block,
-      rows: block.rows.map((row) =>
+      rows: [block.rows[0], [{ ...institution, paragraphs: institutionParagraphs }]].map((row) =>
         row.map((cell) => ({
           ...cell,
           paragraphs: cell.paragraphs.map((p) =>
@@ -128,9 +137,9 @@ export const chapters = [
     range: [77, 121],
     titleId: 77,
     description:
-      'Scaling the core platform, designing for four roles, and removing sales barriers with a white-label model.',
+      'Scaling the core platform for startups, coaches, and innovation institutes, and removing sales barriers with program-based modularity and a white-label model.',
     image: 'image29.png',
-    takeaway: '9 → 22 innovation organizations',
+    takeaway: '5 → 42 innovation institutes',
     sections: [79, 82, 86, 88, 90, 94, 97, 100, 104, 107, 117, 120],
   },
   {
@@ -197,7 +206,7 @@ export const visualLabels: Record<string, string> = {
   'image18.png': 'Curriculum page in the WordPress MVP',
   'image19.png': 'The MVP learning experience with video content',
   'image22.png':
-    'Main-version site map organized around IEE, coach, and startup roles',
+    'Main-version site map organized around Innovation Institute, coach, and startup roles',
   'image24.png':
     'Trigate UI kit and style guide: typography, colors, components, and interface patterns',
   'image26.png': 'Trigate product illustration',
@@ -210,7 +219,7 @@ export const visualLabels: Record<string, string> = {
     'Monitoring dashboard with application trends and activity metrics',
   'image34.png': 'Startup portfolio with filters and individual team cards',
   'image35.png':
-    'A startup dashboard with performance metrics and coaching reports',
+    'a coach dashboard with assigned startups',
   'image36.png': 'Education illustration',
   'image38.png': 'Educational resources and course library',
   'image39.png': 'Education programs, camps, and learning opportunities',

@@ -25,10 +25,11 @@ for route,start,end in chapters:
     if route=='co-founder-matching':
         founder=article.xpath('.//figure[.//img[@src=$src]]',src=media['image69.png']['src'])
         assert len(founder)==1 and not founder[0].xpath('.//button | .//figcaption')
+    complete_text=norm(''.join(article.itertext()))
     for decorative in article.xpath('.//figcaption | .//*[@class="step-index"] | .//*[@class="image-expand"]'):
         decorative.drop_tree()
     text=norm(''.join(article.itertext()))
-    source_blocks=[b for b in data['blocks'] if start<b['id']<=end and b['id'] not in [45,46,47,48,134,165,174,176,186]]
+    source_blocks=[b for b in data['blocks'] if start<b['id']<=end and b['id'] not in [45,46,47,48,84,134,165,174,176,186]]
     visible_ids=[]
     for el in article.xpath('.//*[@data-source-id or @data-source-ids]'):
         visible_ids+=list(map(int,(el.get('data-source-id') or el.get('data-source-ids')).split(',')))
@@ -37,7 +38,9 @@ for route,start,end in chapters:
     refs=[]; expected_media=[]
     for b in source_blocks:
         paragraphs=[b] if b['type']=='paragraph' else [p for r in b['rows'] for c in r for p in c['paragraphs']]
+        if b['id'] in [91,101,117]: continue  # Complete replacement documents verified below.
         for p in paragraphs:
+            if b['id']==79 and p in b['rows'][1][0]['paragraphs'] and not p['text']: continue  # Removed staff-card illustration.
             retained_images=['coaching-summary.png','coaching-tasks-original.png','coaching-health.png'] if b['id']==167 else [] if b['id']==143 else p['images']
             refs+=retained_images
             expected_media += [f'/assets/mvp/{metric_icons[n]}' if b['id']==70 and n in metric_icons else media[n]['src'] for n in retained_images]
@@ -48,7 +51,9 @@ for route,start,end in chapters:
             if b['id']==35: expected_text=expected_text.replace('3 startup teams','4 startup teams')
             if b['id']==70: expected_text={'300+':'500+','80+':'140+','9':'5','IEEs using the Trigate-branded MVP':'Innovation institutes using the MVP'}.get(expected_text.strip(),expected_text)
             if b['id']==248 and expected_text.strip() in ['up','down']: expected_text=''
-            if b['id']==79: expected_text=expected_text.replace('Core Needs:','')
+            if b['id']==79:
+                expected_text=expected_text.replace('Core Needs:','').replace('IEE Administrators','Innovation Institute')
+                if 'IEE Staff' in expected_text: expected_text=''
             if b['id']==153: expected_text=expected_text.replace('Business and UX Impact:','Business and UX Impact')
             if b['id']==127: expected_text=re.sub(r'^(Viewer|Founder|Team member):',r'\1',expected_text)
             fragments=expected_text.split('\n')
@@ -89,7 +94,27 @@ for route,start,end in chapters:
             assert steps[-1].xpath('./span/br')
     if route=='the-main-version':
         assert article.xpath('.//h2[@id="section-79" and text()="Roles and Core Needs"]')
-        assert article.xpath('.//h2[@id="section-88" and text()="UI Design"]')
+        assert article.xpath('.//h2[@id="section-88" and text()="User Interface Flows"]')
+        cards=article.xpath('.//*[@data-source-id="79"]/article')
+        assert len(cards)==3 and 'Innovation Institute' in ''.join(cards[-1].itertext())
+        assert not article.xpath('.//*[@data-source-id="84"]')
+        assert 'IEE Staff' not in ''.join(article.itertext()) and 'IEE Administrators' not in ''.join(article.itertext())
+        assert len(article.xpath('.//li[strong[text()="Program-Based Modularity:"]]'))==1
+        assert article.xpath('.//*[@data-source-id="111"]//strong/text()')==['flexible, program-specific modularity','White-Label Model']
+        assert len(article.xpath('.//nav[@aria-label="Explore the deep dives"]/a'))==3
+        assert article.xpath('.//video[@controls]/source[contains(@src,"program.mp4")]')
+        imported=json.loads((ROOT/'content/main-version.json').read_text())
+        for document in imported.values():
+            for block in document:
+                if 'table' in block:
+                    for row in block['table']:
+                        for cell in row:
+                            assert norm(''.join(cell)) in complete_text
+                elif not block['text'].startswith('[video:'):
+                    assert norm(block['text']) in complete_text, block['text']
+                for name in block.get('images',[]):
+                    assert media[name]['src'] in imgs, name
+        assert all(media[name]['src'] not in imgs for name in ['image28.png','image29.png','image30.png','image43.png','image44.png'])
         assert 'Core Needs:' not in ''.join(article.itertext())
         for section_id in [90,94,97,100,104]:
             heading=article.xpath('.//h3[@id=$id]',id=f'section-{section_id}')
