@@ -101,7 +101,12 @@ for route,start,end in chapters:
         assert 'IEE Staff' not in ''.join(article.itertext()) and 'IEE Administrators' not in ''.join(article.itertext())
         assert len(article.xpath('.//li[strong[text()="Program-Based Modularity:"]]'))==1
         assert article.xpath('.//*[@data-source-id="111"]//strong/text()')==['flexible, program-specific modularity','White-Label Model']
-        assert len(article.xpath('.//nav[@aria-label="Explore the deep dives"]/a'))==3
+        assert len(article.xpath('.//nav[@aria-label="Explore the deep dives"]/article/a[text()="Read"]'))==3
+        assert article.xpath('.//li[strong[text()="Program-Based Modularity:"]]/following-sibling::li[@data-source-id="109"]')
+        assert article.xpath('.//*[contains(@class,"application-gallery")]/figure') and len(article.xpath('.//*[contains(@class,"application-gallery")]/figure'))==2
+        assert len(article.xpath('.//*[contains(@class,"main-coaching-gallery")]/figure'))==3
+        assert len(article.xpath('.//*[contains(@class,"event-gallery")]/figure'))==4
+        assert article.xpath('.//*[contains(@class,"dashboard-animation-figure")]')
         assert article.xpath('.//video[@controls]/source[contains(@src,"program.mp4")]')
         imported=json.loads((ROOT/'content/main-version.json').read_text())
         for document in imported.values():

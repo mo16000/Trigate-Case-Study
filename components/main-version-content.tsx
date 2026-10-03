@@ -23,7 +23,7 @@ export function ProgramContent() {
       <a href={assetPath('/assets/main-version/program.mp4')}>Watch the Create Program demonstration</a>
     </video>
     <h4>{p[15].text}</h4>
-    <div className="evidence-gallery">
+    <div className="evidence-gallery requested-grid application-gallery">
       <CaseImage name={p[16].images[0]} alt="Startup application assessment overview" showCaption={false} />
       <CaseImage name={p[17].images[0]} alt="Startup application evaluation details" showCaption={false} />
     </div>
@@ -31,7 +31,7 @@ export function ProgramContent() {
 }
 
 export function CoachingContent() {
-  return <div data-source-id="101" className="evidence-gallery main-coaching-gallery">
+  return <div data-source-id="101" className="evidence-gallery requested-grid main-coaching-gallery">
     {[2, 4, 6].map((index) => <CaseImage key={index} name={content.c[index].images[0]} alt={content.c[index + 1].text} />)}
   </div>;
 }
@@ -50,7 +50,7 @@ export function MainVersionResults() {
       </Table>
     </div>
     <h3>{r[4].text}</h3>
-    <div className="evidence-gallery event-gallery">
+    <div className="evidence-gallery requested-grid event-gallery">
       {r[5].images!.map((name, index) => <CaseImage key={name} name={name} alt={`Event held through Trigate — example ${index + 1}`} showCaption={false} />)}
     </div>
   </section>;
@@ -58,8 +58,14 @@ export function MainVersionResults() {
 
 export function DeepDiveLinks() {
   return <nav className="deep-dive-links" aria-label="Explore the deep dives">
-    <a className="primary-link" href={pagePath('/removing-the-drop-off')}>Deep Dive 1 · Removing the Drop-off</a>
-    <a className="primary-link" href={pagePath('/coaching-report-workflow')}>Deep Dive 2 · Streamlining the Coaching Report Workflow</a>
-    <a className="primary-link" href={pagePath('/co-founder-matching')}>Deep Dive 3 · Designing a High-Trust Co-Founder Matching Framework</a>
+    {[
+      ['Removing the Drop-off', '/removing-the-drop-off'],
+      ['Streamlining the Coaching Report Workflow', '/coaching-report-workflow'],
+      ['Designing a High-Trust Co-Founder Matching Framework', '/co-founder-matching'],
+    ].map(([title, path], index) => <article className="deep-dive-card" key={path}>
+      <p className="deep-dive-number">Deep Dive {index + 1}</p>
+      <h3>{title}</h3>
+      <a className="deep-dive-read" href={pagePath(path)} aria-label={`Read Deep Dive ${index + 1}: ${title}`}>Read</a>
+    </article>)}
   </nav>;
 }

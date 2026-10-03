@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { assetPath, pagePath } from '@/lib/site-path';
 import { PhaseOneResearch } from './phase-one-research';
+import { DashboardAnimation } from './dashboard-animation';
 import { ProgramContent, CoachingContent, MainVersionResults, DeepDiveLinks } from './main-version-content';
 import { ArrowRight } from 'lucide-react';
 import {
@@ -159,7 +160,7 @@ function Gallery({
     <div
       className={`evidence-gallery ${layout === 'three' ? 'gallery-three' : layout === 'telegram' ? 'gallery-telegram' : mvpScreens ? 'gallery-mvp' : names.length > 1 ? 'gallery-pair' : ''}`}
     >
-      {names.map((name) => (
+      {names.map((name) => name === 'image33.png' ? <DashboardAnimation key={name} /> : (
         <CaseImage
           key={name}
           name={name}
@@ -473,6 +474,7 @@ export function SourceContent({
           key={b.id}
           className={`source-list ${list.length >= 3 ? 'list-grid' : ''}`}
         >
+          {b.id === 109 && <li><strong>Program-Based Modularity:</strong> Innovation institutes run diverse acceleration programs and events across distinct investment stages. Consequently, they required the flexibility to customize their program roadmaps, educational curricula, committee members per program, and scheduling.</li>}
           {list.map((p) => (
             <li
               key={p.id}
@@ -492,7 +494,6 @@ export function SourceContent({
               {p.images.length > 0 && <Gallery names={p.images} />}
             </li>
           ))}
-          {b.id === 109 && <li><strong>Program-Based Modularity:</strong> Innovation institutes run diverse acceleration programs and events across distinct investment stages. Consequently, they required the flexibility to customize their program roadmaps, educational curricula, committee members per program, and scheduling.</li>}
         </ul>,
       );
       continue;

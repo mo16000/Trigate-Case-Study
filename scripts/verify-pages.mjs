@@ -43,5 +43,6 @@ for (const asset of Object.values(media)) {
   for (const variant of [asset, ...asset.variants]) verifyUrl(prefix.slice(0, -1) + variant.src, 'index.html');
 }
 verifyUrl(`${prefix}assets/hero-animation.json`, 'index.html');
+verifyUrl(`${prefix}assets/main-version/dashboard-animation.json`, 'the-main-version/index.html');
 assert(existsSync('out/.nojekyll'));
 console.log(`Verified ${routes.length} static pages, navigation payloads, and ${checked} asset/link references.`);
