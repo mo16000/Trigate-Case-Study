@@ -59,7 +59,7 @@ export const blocks = (source.blocks as Block[]).map((block): Block => {
       : [p]);
     return {
       ...block,
-      rows: [block.rows[0], [{ ...institution, paragraphs: institutionParagraphs }]].map((row) =>
+      rows: [[block.rows[0][0], { ...institution, paragraphs: institutionParagraphs }], [block.rows[0][1]]].map((row) =>
         row.map((cell) => ({
           ...cell,
           paragraphs: cell.paragraphs.map((p) =>
@@ -139,7 +139,7 @@ export const chapters = [
     description:
       'Scaling the core platform for startups, coaches, and innovation institutes, and removing sales barriers with program-based modularity and a white-label model.',
     image: 'image29.png',
-    takeaway: '5 → 42 innovation institutes',
+    takeaway: '22 → 42 innovation institutes',
     sections: [79, 82, 86, 88, 90, 94, 97, 100, 104, 107, 117, 120],
   },
   {

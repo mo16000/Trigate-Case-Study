@@ -96,7 +96,11 @@ for route,start,end in chapters:
         assert article.xpath('.//h2[@id="section-79" and text()="Roles and Core Needs"]')
         assert article.xpath('.//h2[@id="section-88" and text()="User Interface Flows"]')
         cards=article.xpath('.//*[@data-source-id="79"]/article')
-        assert len(cards)==3 and 'Innovation Institute' in ''.join(cards[-1].itertext())
+        assert len(cards)==3
+        assert [''.join(card.xpath('./p[1]//text()')).strip() for card in cards]==['Startup Teams and Users','Innovation Institute','Coaches']
+        assert article.xpath('.//*[@class="program-capabilities"]/article/p/strong/text()')==['Comprehensive & Modular Roadmap:', 'Modular Educational Curriculum:', 'Program Resource Management:', 'Flexible Scheduling:', 'Multi-Format Support:']
+        assert article.xpath('.//h2[@id="section-117"]/text()')==['Results and Impacts:']
+        assert 'grew from 22 to 42.' in ''.join(article.itertext())
         assert not article.xpath('.//*[@data-source-id="84"]')
         assert 'IEE Staff' not in ''.join(article.itertext()) and 'IEE Administrators' not in ''.join(article.itertext())
         assert len(article.xpath('.//li[strong[text()="Program-Based Modularity:"]]'))==1

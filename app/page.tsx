@@ -108,10 +108,10 @@ export default function Overview() {
           </h2>
           <div className="outcomes-grid">
             <a href={pagePath('/the-main-version#section-117')}>
-              <strong>5 → 42</strong>
+              <strong>22 → 42</strong>
               <h3>Innovation institutes</h3>
               <p>
-                Active innovation institutes grew in the nine months after introducing
+                Active innovation institutes grew after introducing
                 program-based modularity and the white-label model.
               </p>
               <span>

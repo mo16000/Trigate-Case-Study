@@ -14,7 +14,7 @@ export function ProgramContent() {
     <div className="program-capabilities">
       {[3, 5, 7, 9, 11].map((index) => <article key={index}>
         <AssetImage name={p[index].images[0]} alt="" sizes="40px" />
-        <p><Copy block={p[index + 1]} /></p>
+        <p><strong>{p[index + 1].text.slice(0, p[index + 1].text.indexOf(':') + 1)}</strong>{p[index + 1].text.slice(p[index + 1].text.indexOf(':') + 1)}</p>
       </article>)}
     </div>
     <h4>{p[13].text}</h4>
@@ -44,9 +44,12 @@ export function MainVersionResults() {
     <p><Copy block={r[1]} /></p>
     <h3>{r[2].text}</h3>
     <div className="table-shell">
-      <Table className="comparison-table" aria-label="Nine-month impact before and after launch">
+      <Table className="comparison-table results-stage-table" aria-label="Results across MVP, pre-modularity, and post-launch stages">
         <TableHeader><TableRow>{rows[0].map((cell, index) => <TableHead key={index} scope="col">{cell.join('\n')}</TableHead>)}</TableRow></TableHeader>
-        <TableBody>{rows.slice(1).map((row, index) => <TableRow key={index}>{row.map((cell, column) => column === 0 ? <TableHead key={column} scope="row">{cell.join('\n')}</TableHead> : <TableCell key={column}>{cell.join('\n')}</TableCell>)}</TableRow>)}</TableBody>
+        {rows.slice(1).map((row, index) => row.length === 1 ? null : <TableBody key={index}>
+          <TableRow className="results-metric-heading"><TableHead id={`result-metric-${index}`} colSpan={3} scope="rowgroup">{rows[index][0].join('\n')}</TableHead></TableRow>
+          <TableRow>{row.map((cell, column) => <TableCell key={column} colSpan={r[3].spans![index + 1][column]} headers={`result-metric-${index}`}>{cell.join('\n')}</TableCell>)}</TableRow>
+        </TableBody>)}
       </Table>
     </div>
     <h3>{r[4].text}</h3>

@@ -997,6 +997,8 @@ svg {
 .main-version-results > h3 { font-size: 1.25rem; line-height: 1.5; margin: 32px 0 20px; }
 .main-version-results .table-shell { background: white; border-radius: 14px; overflow-x: auto; }
 .main-version-results .comparison-table { min-width: 650px; }
+.results-stage-table { table-layout: fixed; }
+.results-stage-table .results-metric-heading th { background: #efefff; color: #404eb2; font-weight: 700; }
 .requested-grid { display: grid; gap: clamp(8px, 1.5vw, 20px); align-items: start; }
 .application-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .main-coaching-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
