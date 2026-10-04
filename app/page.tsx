@@ -52,7 +52,7 @@ export default function Overview() {
         </div>
         <div className="metrics-row">
           {[
-            ['7,000+', 'startup ideas'],
+            ['7,000+', 'startup users'],
             ['40+', 'innovation institutes'],
             ['60+', 'different programs'],
             ['All', 'provinces across Iran'],
@@ -108,7 +108,7 @@ export default function Overview() {
           </h2>
           <div className="outcomes-grid">
             <a href={pagePath('/the-main-version#section-117')}>
-              <strong>22 → 42</strong>
+              <strong>5 → 42</strong>
               <h3>Innovation institutes</h3>
               <p>
                 Active innovation institutes grew after introducing
